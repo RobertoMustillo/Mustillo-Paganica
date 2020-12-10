@@ -1,5 +1,5 @@
 # Mustillo-Paganica
-Progetto di Programmazione ad Oggetti
+Implementare un servizio meteo che faccia visualizzare tutte le informazioni attuali relative alla temperatura e alle condizioni meteo, e le relative previsioni per i giorni successivi e infine dovrà generare delle statistiche.
 
 ## Formato dei dati restituiti
 In seguito ad una richiesta al servizio viene restituito come risultato un JSON rappresentante un array di oggetti rappresentanti i dati appartenenti al dataset. Il formato dell'oggetto rappresentante il singolo elemento, nello specifico è il seguente:
@@ -159,3 +159,9 @@ In seguito ad una richiesta al servizio viene restituito come risultato un JSON 
                           
 
 ```
+
+# UML
+## Use Case Diagram
+
+![](Mustillo-Paganica Use Case Diagram.png)
+
