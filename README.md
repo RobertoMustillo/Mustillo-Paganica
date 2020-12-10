@@ -163,5 +163,5 @@ In seguito ad una richiesta al servizio viene restituito come risultato un JSON 
 # UML
 ## Use Case Diagram
 
-![](Mustillo-Paganica Use Case Diagram.png)
+![](Mustillo-Paganica Use Case Diagram.jpg)
 
