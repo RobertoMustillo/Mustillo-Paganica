@@ -5,7 +5,7 @@ Progetto di Programmazione ad Oggetti
 In seguito ad una richiesta al servizio viene restituito come risultato un JSON rappresentante un array di oggetti rappresentanti i dati appartenenti al dataset. Il formato dell'oggetto rappresentante il singolo elemento, nello specifico è il seguente:
 ```
 	                          
-	{
+{
    "cod":"200",
    "message":0.0032,
    "cnt":36,
