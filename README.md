@@ -165,3 +165,7 @@ In seguito ad una richiesta al servizio viene restituito come risultato un JSON 
 
 <img src ="/Mustillo-Paganica Use Case Diagram.jpg"/>
 
+# Autori
+
+- [Roberto Mustillo](https://github.com/RobertoMustillo) - Contributo 50%
+- [Aldo Paganica](https://github.com/AldoPaganica) - Contributo 50%
