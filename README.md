@@ -1,14 +1,14 @@
 # Mustillo-Paganica
-Implementa un servizio meteo che faccia visualizzare tutte le informazioni attuali relative alla temperatura e alle condizioni meteo, e le relative previsioni per i giorni successivi e infine dovrà generare delle statistiche.
+Programma che implementa un servizio meteo che faccia visualizzare tutte le informazioni attuali relative alla temperatura e alle condizioni meteo, e le relative previsioni per i giorni successivi e infine dovrà generare delle statistiche.
 
 ## Formato dei dati restituiti
 In seguito ad una richiesta al servizio viene restituito come risultato un JSON rappresentante un array di oggetti rappresentanti i dati appartenenti al dataset. Il formato dell'oggetto rappresentante il singolo elemento, nello specifico è il seguente:
 ```
 	                          
 {
-   "cod":"1",
+   "cod":"0",
    "message":0.0032,
-   "cnt":36,
+   "cnt":1,
    "list":[
       {
          "dt":1487246400,
