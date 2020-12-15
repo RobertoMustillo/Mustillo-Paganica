@@ -49,7 +49,7 @@ In seguito ad una richiesta al servizio viene restituito come risultato un JSON 
 # UML
 ## Use Case Diagram
 
-<img src ="/Mustillo-Paganica Use Case Diagram.jpg"/>
+<img src ="/Mustillo-Paganica Use Case Diagram.png"/>
 
 # Autori
 
