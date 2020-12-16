@@ -22,7 +22,8 @@ public class MeteoParser extends MeteoClass {
 
 		// End of user code
 
-		public MeteoParser() {
+		public MeteoParser(String Citta) {
+			super(Citta);
 			this.MeteoJsonArray = new JSONArray();
 		}
 		/**

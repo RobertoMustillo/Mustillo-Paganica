@@ -13,7 +13,7 @@ public class MeteoClass {
 	/**
 	 * Description of the property NomeCitta.
 	 */
-	public String NomeCitta = "";
+	public String Citta = "";
 
 	/**
 	 * Description of the property Temperatura.
@@ -62,10 +62,10 @@ public class MeteoClass {
 	/**
 	 * The constructor.
 	 */
-	public MeteoClass() {
+	public MeteoClass(String Citta) {
 		// Start of user code constructor for MeteoClass)
-		super();
 		// End of user code
+		this.Citta = Citta;
 	}
 
 	public void getFromMeteoParser(String nomeCitta) {
@@ -77,19 +77,19 @@ public class MeteoClass {
 
 	// End of user code
 	/**
-	 * Returns NomeCitta.
-	 * @return NomeCitta 
+	 * Returns Citta.
+	 * @return Citta 
 	 */
-	public String getNomeCitta() {
-		return this.NomeCitta;
+	public String getCitta() {
+		return this.Citta;
 	}
 
 	/**
 	 * Sets a value to attribute NomeCitta. 
 	 * @param newNomeCitta 
 	 */
-	public void setNomeCitta(String newNomeCitta) {
-		this.NomeCitta = newNomeCitta;
+	public void setCitta(String newCitta) {
+		this.Citta = newCitta;
 	}
 
 	/**
