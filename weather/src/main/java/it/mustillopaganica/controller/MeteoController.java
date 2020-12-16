@@ -32,8 +32,10 @@ public class MeteoController {
 		// Start of user code for method scegliUnita
 		// End of user code
 	}
-
+    
 	// Start of user code (user defined methods for MeteoController)
 
 	// End of user code
+	
+	
 }

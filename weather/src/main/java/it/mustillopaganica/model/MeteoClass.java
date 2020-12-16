@@ -179,5 +179,6 @@ public class MeteoClass {
 	public void setVarianza(double newVarianza) {
 		this.Varianza = newVarianza;
 	}
-
+     //provaa
+	
 }
