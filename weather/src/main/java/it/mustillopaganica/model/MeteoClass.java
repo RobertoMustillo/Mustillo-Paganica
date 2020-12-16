@@ -1,71 +1,31 @@
-/**
- * @author rbtms
- *
- */
+
 package it.mustillopaganica.model;
 
-/**
- * Description of MeteoClass.
- * 
- * @author rbtms
+/* 
+ * @author roberto mustillo
  */
 public class MeteoClass {
-	/**
-	 * Description of the property NomeCitta.
-	 */
+	
 	public String Citta = "";
+	private double Temperatura;
+	private double TemperaturaMinima;
+	private double TemperaturaMassima;
+	private int Umidita;
+	private double TemperaturaReale;
+	private double TemperaturaPercepita;
+	private double Media;
+	private double Varianza;
 
-	/**
-	 * Description of the property Temperatura.
-	 */
-	private double Temperatura = 0D;
-
-	/**
-	 * Description of the property TemperaturaMinima.
-	 */
-	private double TemperaturaMinima = 0D;
-
-	/**
-	 * Description of the property TemperaturaMassima.
-	 */
-	private double TemperaturaMassima = 0D;
-
-	/**
-	 * Description of the property Umidita.
-	 */
-	private Integer Umidita = Integer.valueOf(0);
-
-	/**
-	 * Description of the property TemperaturaReale.
-	 */
-	private double TemperaturaReale = 0D;
-
-	/**
-	 * Description of the property TemperaturaPercepita.
-	 */
-	private double TemperaturaPercepita = 0D;
-
-	/**
-	 * Description of the property Media.
-	 */
-	private double Media = 0D;
-
-	/**
-	 * Description of the property Varianza.
-	 */
-	private double Varianza = 0D;
-
-	// Start of user code (user defined attributes for MeteoClass)
-
-	// End of user code
-
-	/**
-	 * The constructor.
-	 */
-	public MeteoClass(String Citta) {
-		// Start of user code constructor for MeteoClass)
-		// End of user code
+	public MeteoClass(String Citta, double temp, double tempMin, double tempMax, int umidita, double tempReale, double tempPerc, double media, double varianza) {
 		this.Citta = Citta;
+		temp = Temperatura;
+		tempMin = TemperaturaMinima;
+		tempMax = TemperaturaMassima;
+		umidita = Umidita;
+		tempReale = TemperaturaReale;
+		tempPerc = TemperaturaPercepita;
+		media = Media;
+		varianza = Varianza;
 	}
 
 	public void getFromMeteoParser(String nomeCitta) {
@@ -144,7 +104,7 @@ public class MeteoClass {
 	 * Returns Umidita.
 	 * @return Umidita 
 	 */
-	public Integer getUmidita() {
+	public int getUmidita() {
 		return this.Umidita;
 	}
 
@@ -152,7 +112,7 @@ public class MeteoClass {
 	 * Sets a value to attribute Umidita. 
 	 * @param newUmidita 
 	 */
-	public void setUmidita(Integer newUmidita) {
+	public void setUmidita(int newUmidita) {
 		this.Umidita = newUmidita;
 	}
 
