@@ -9,7 +9,7 @@ import it.mustillopaganica.utility.MeteoParser;
 public class MeteoClass {
 	
 	private String Citta;
-	private long epoch;
+	private String epoch;
 	private double Temperatura;
 	private double TemperaturaMinima;
 	private double TemperaturaMassima;
@@ -19,7 +19,10 @@ public class MeteoClass {
 	private double Media;
 	private double Varianza;
 
-	public MeteoClass(String Citta, long epoch, double temp, double tempMin, double tempMax, int umidita, double tempReale, double tempPerc, double media, double varianza) {
+	public MeteoClass() {
+		
+	}
+	public MeteoClass(String Citta, String epoch, double temp, double tempMin, double tempMax, int umidita, double tempReale, double tempPerc, double media, double varianza) {
 		this.Citta = Citta;
 		this.epoch = epoch;
 		temp = Temperatura;
@@ -32,7 +35,7 @@ public class MeteoClass {
 		varianza = Varianza;
 	}
 
-	public void getFromMeteoParser(String nomeCitta) {
+	public void getFromMeteoParser(String Citta) {
 		MeteoParser openWeatherParser = new MeteoParser(Citta);
 		openWeatherParser.parser();
 		this.Citta = openWeatherParser.getCitta();
@@ -190,11 +193,11 @@ public class MeteoClass {
 		this.Varianza = newVarianza;
 	}
 
-	public long getEpoch() {
+	public String getEpoch() {
 		return epoch;
 	}
 
-	public void setEpoch(long epoch) {
+	public void setEpoch(String epoch) {
 		this.epoch = epoch;
 	}
 	
