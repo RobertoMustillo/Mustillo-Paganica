@@ -4,5 +4,6 @@ public class MeteoException {
 
 	public MeteoException() {
 		
+		
 	}
 }
