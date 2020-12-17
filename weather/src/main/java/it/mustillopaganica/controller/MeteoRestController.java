@@ -22,9 +22,9 @@ import it.mustillopaganica.model.MeteoClass;
 @RestController
 public class MeteoRestController {
 
-/*	@Autowired
-	MeteoClass productService;
-	
+	@Autowired
+	MeteoClass meteoclass;
+/*	
 	@RequestMapping(value = "/products", method = RequestMethod.GET)
 	public ResponseEntity<Object> getProduct() {
 		return new ResponseEntity<>(productService.get(), HttpStatus.OK);
@@ -34,10 +34,10 @@ public class MeteoRestController {
 	public MeteoClass data() {
 		return new MeteoClass("Termoli", 246982, 4.2, 3.3, 20.0, 5, 11.0, 10.9, 7.0, 5.7);
 	}
-	@GetMapping("/prova")
-	public String prova(){
+/*	@GetMapping("/prova")
+	public ResponseEntity<Object>String prova(){
 		return "CIAOO";
-	}
+	}*/
 
 	@PostMapping("/data")
 	public MeteoClass data2(@RequestBody MeteoClass body){
