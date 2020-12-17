@@ -1,12 +1,15 @@
 
 package it.mustillopaganica.model;
 
+import it.mustillopaganica.utility.MeteoParser;
+
 /* 
  * @author roberto mustillo
  */
 public class MeteoClass {
 	
-	public String Citta = "";
+	private String Citta;
+	private long epoch;
 	private double Temperatura;
 	private double TemperaturaMinima;
 	private double TemperaturaMassima;
@@ -16,8 +19,9 @@ public class MeteoClass {
 	private double Media;
 	private double Varianza;
 
-	public MeteoClass(String Citta, double temp, double tempMin, double tempMax, int umidita, double tempReale, double tempPerc, double media, double varianza) {
+	public MeteoClass(String Citta, long epoch, double temp, double tempMin, double tempMax, int umidita, double tempReale, double tempPerc, double media, double varianza) {
 		this.Citta = Citta;
+		this.epoch = epoch;
 		temp = Temperatura;
 		tempMin = TemperaturaMinima;
 		tempMax = TemperaturaMassima;
@@ -29,8 +33,14 @@ public class MeteoClass {
 	}
 
 	public void getFromMeteoParser(String nomeCitta) {
-		// Start of user code for method getFromMeteoParser
-		// End of user code
+		MeteoParser openWeatherParser = new MeteoParser(Citta);
+		openWeatherParser.parser();
+		this.Citta = openWeatherParser.getCitta();
+		this.epoch = openWeatherParser.getEpoch();
+		this.Temperatura = openWeatherParser.getTemperatura();
+		this.TemperaturaMassima = openWeatherParser.getTemperaturaMassima();
+		this.TemperaturaMinima = openWeatherParser.getTemperaturaMinima();
+		this.Umidita = openWeatherParser.getUmidita();
 	}
 
 	// Start of user code (user defined methods for MeteoClass)
@@ -179,6 +189,13 @@ public class MeteoClass {
 	public void setVarianza(double newVarianza) {
 		this.Varianza = newVarianza;
 	}
-     //provaa22222
+
+	public long getEpoch() {
+		return epoch;
+	}
+
+	public void setEpoch(long epoch) {
+		this.epoch = epoch;
+	}
 	
 }
