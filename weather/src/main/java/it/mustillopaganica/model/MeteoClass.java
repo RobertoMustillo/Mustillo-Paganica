@@ -1,11 +1,13 @@
 
 package it.mustillopaganica.model;
 
+
 import it.mustillopaganica.utility.MeteoParser;
 
 /* 
  * @author roberto mustillo
  */
+
 public class MeteoClass {
 	
 	private String Citta;
@@ -13,26 +15,21 @@ public class MeteoClass {
 	private double Temperatura;
 	private double TemperaturaMinima;
 	private double TemperaturaMassima;
-	private int Umidita;
-	private double TemperaturaReale;
+	private long Umidita;
 	private double TemperaturaPercepita;
-	private double Media;
-	private double Varianza;
+
 
 	public MeteoClass() {
 		
 	}
-	public MeteoClass(String Citta, String epoch, double temp, double tempMin, double tempMax, int umidita, double tempReale, double tempPerc, double media, double varianza) {
+	public MeteoClass(String Citta, String epoch, double temp, double tempPerc,double tempMin, double tempMax, long umidita) {
 		this.Citta = Citta;
 		this.epoch = epoch;
-		temp = Temperatura;
-		tempMin = TemperaturaMinima;
-		tempMax = TemperaturaMassima;
-		umidita = Umidita;
-		tempReale = TemperaturaReale;
-		tempPerc = TemperaturaPercepita;
-		media = Media;
-		varianza = Varianza;
+		Temperatura=temp;
+		TemperaturaPercepita = tempPerc;
+		TemperaturaMinima = tempMin;
+		TemperaturaMassima = tempMax;
+		Umidita = umidita;
 	}
 
 	public void getFromMeteoParser(String Citta) {
@@ -41,6 +38,7 @@ public class MeteoClass {
 		this.Citta = openWeatherParser.getCitta();
 		this.epoch = openWeatherParser.getEpoch();
 		this.Temperatura = openWeatherParser.getTemperatura();
+		this.TemperaturaPercepita = openWeatherParser.getTemperaturaPercepita();
 		this.TemperaturaMassima = openWeatherParser.getTemperaturaMassima();
 		this.TemperaturaMinima = openWeatherParser.getTemperaturaMinima();
 		this.Umidita = openWeatherParser.getUmidita();
@@ -117,7 +115,7 @@ public class MeteoClass {
 	 * Returns Umidita.
 	 * @return Umidita 
 	 */
-	public int getUmidita() {
+	public long getUmidita() {
 		return this.Umidita;
 	}
 
@@ -125,24 +123,8 @@ public class MeteoClass {
 	 * Sets a value to attribute Umidita. 
 	 * @param newUmidita 
 	 */
-	public void setUmidita(int newUmidita) {
+	public void setUmidita(long newUmidita) {
 		this.Umidita = newUmidita;
-	}
-
-	/**
-	 * Returns TemperaturaReale.
-	 * @return TemperaturaReale 
-	 */
-	public double getTemperaturaReale() {
-		return this.TemperaturaReale;
-	}
-
-	/**
-	 * Sets a value to attribute TemperaturaReale. 
-	 * @param newTemperaturaReale 
-	 */
-	public void setTemperaturaReale(double newTemperaturaReale) {
-		this.TemperaturaReale = newTemperaturaReale;
 	}
 
 	/**
@@ -161,39 +143,7 @@ public class MeteoClass {
 		this.TemperaturaPercepita = newTemperaturaPercepita;
 	}
 
-	/**
-	 * Returns Media.
-	 * @return Media 
-	 */
-	public double getMedia() {
-		return this.Media;
-	}
-
-	/**
-	 * Sets a value to attribute Media. 
-	 * @param newMedia 
-	 */
-	public void setMedia(double newMedia) {
-		this.Media = newMedia;
-	}
-
-	/**
-	 * Returns Varianza.
-	 * @return Varianza 
-	 */
-	public double getVarianza() {
-		return this.Varianza;
-	}
-
-	/**
-	 * Sets a value to attribute Varianza. 
-	 * @param newVarianza 
-	 */
-	public void setVarianza(double newVarianza) {
-		this.Varianza = newVarianza;
-	}
-
-	public String getEpoch() {
+		public String getEpoch() {
 		return epoch;
 	}
 

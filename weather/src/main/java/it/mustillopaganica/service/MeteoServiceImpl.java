@@ -9,33 +9,36 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import it.mustillopaganica.model.MeteoClass;
 
 /**
- * @author rbtms
+ @author rbtms
  *
  */
-public class MeteoServiceImpl {
-	private static Map<Integer, MeteoClass> productRepo = new HashMap<>();
-		
-		public MeteoServiceImpl() {
-			MeteoClass honey = new MeteoClass();
-			
-		}
-		
-/*		@Override
-		public void createProduct(Product product) {
-			if(productRepo.containsKey(product.getId())) {
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Existing id...");
-			}
-			productRepo.put(product.getId(), product);
-		}
+@Service
+public class MeteoServiceImpl implements MeteoService{
+	
+	//public Map<Integer, MeteoClass> meteo = new HashMap<>();
+	private static Map<Integer, MeteoClass> meteoRepo = new HashMap<>();
 
-		@Override
-		public Collection<Product> getProducts() {
-			return productRepo.values();
-		}
-*/		
+/*	@Override
+	public Map<Integer, MeteoClass> getMeteoData() {
+		meteoRepo.put(1,new MeteoClass("termoli", "18122020", 12, 10, 8, 19, 89));
+
+		return meteoRepo;
+	}
+*/
+	@Override
+	public Collection<MeteoClass> getMeteoData() {
+		return meteoRepo.values();
+	}
+	
+	@Override
+	public void misurazione() {
+		
+	}
+ 
 }

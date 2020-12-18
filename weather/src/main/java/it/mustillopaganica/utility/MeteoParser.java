@@ -20,6 +20,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import it.mustillopaganica.model.MeteoClass;
@@ -28,6 +29,8 @@ import it.mustillopaganica.model.MeteoClass;
  * @author rbtms
  *
  */
+
+@Service
 public class MeteoParser {
 
 		private String Citta;
@@ -35,11 +38,11 @@ public class MeteoParser {
 		private double Temperatura, TemperaturaPercepita;
 		private double TemperaturaMinima;
 		private double TemperaturaMassima;
-		private int Umidita;
+		private long Umidita;
 
-		private String sito = "http://api.openweathermap.org/data/2.5/forecast?q="+this.Citta+
-								"&appid=1e16191367ab76e8faec0be2fb320e01&units=metric&lang=it"; 
-
+	//	private String sito = "http://api.openweathermap.org/data/2.5/forecast?q="+this.Citta+
+	//							"&appid=1e16191367ab76e8faec0be2fb320e01&units=metric&lang=it"; 
+private String sito = "http://api.openweathermap.org/data/2.5/forecast?q=termoli&appid=1e16191367ab76e8faec0be2fb320e01&units=metric";
 		public MeteoParser(String Citta) {
 			this.Citta=Citta;
 		}
@@ -64,7 +67,7 @@ public class MeteoParser {
 			return TemperaturaMassima;
 		}
 
-		public int getUmidita() {
+		public long getUmidita() {
 			return Umidita;
 		}
 		
@@ -78,20 +81,25 @@ public class MeteoParser {
 		         
 				  String inputLine;
 		            while ((inputLine = in.readLine()) != null) { 
-		            	
-		            	JSONObject city = (JSONObject) parser.parse(inputLine);
+		            	JSONObject meteo = (JSONObject) parser.parse(inputLine);
+
+		            	JSONObject city = (JSONObject)meteo.get("city");
 		            	this.Citta = (String)city.get("name");
 		            			            	
-		                JSONArray a = (JSONArray) city.get("list"); 
-		                for (Object o : a) {
-		                    JSONObject main = (JSONObject) o;
-		                    //JSONObject dt = (JSONObject) o;
-		                    //this.epoch = (String) dt.get("dt_txt");
-		                    this.Temperatura = (Double) main.get("temp");
-		                    this.TemperaturaMinima = (Double) main.get("temp_min");
-		                    this.TemperaturaMassima = (Double) main.get("temp_max");
-		                    this.TemperaturaPercepita = (Double) main.get("feels_like");
-		                    this.Umidita = (Integer) main.get("humidity");
+		                JSONArray list = (JSONArray) meteo.get("list"); 
+		                for (Object o : list) {
+		                	
+		                    JSONObject dt = (JSONObject) o;
+		                    this.epoch = (String) dt.get("dt_txt");
+		                    
+		                    JSONObject meteo2 = (JSONObject) o;
+		                    JSONObject main = (JSONObject) meteo2.get("main");
+		                    
+		                    this.Temperatura = Double.parseDouble(main.get("temp").toString());
+		                    this.TemperaturaPercepita = Double.parseDouble( main.get("feels_like").toString());
+		                    this.TemperaturaMinima = Double.parseDouble(main.get("temp_min").toString());
+		                    this.TemperaturaMassima = Double.parseDouble(main.get("temp_max").toString());
+		                    this.Umidita = Long.parseLong(main.get("humidity").toString());
 		           
 
 		                }
