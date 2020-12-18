@@ -44,10 +44,14 @@ public class MeteoController {
 		return "CIAOO";
 	}*/
 
-	@PostMapping("/data")
+/*	@PostMapping("/data")
 	public MeteoClass data2(@RequestBody MeteoClass body){
 		return body;
 	}
-	
+	*/
+	@GetMapping("/ciao")
+	public String prova() {
+		return "ciaooo";
+	}
 	
 }

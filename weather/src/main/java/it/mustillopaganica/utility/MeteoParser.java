@@ -40,9 +40,9 @@ public class MeteoParser {
 		private double TemperaturaMassima;
 		private long Umidita;
 
-	//	private String sito = "http://api.openweathermap.org/data/2.5/forecast?q="+this.Citta+
-	//							"&appid=1e16191367ab76e8faec0be2fb320e01&units=metric&lang=it"; 
-private String sito = "http://api.openweathermap.org/data/2.5/forecast?q=termoli&appid=1e16191367ab76e8faec0be2fb320e01&units=metric";
+		private String sito = "http://api.openweathermap.org/data/2.5/forecast?q="+this.Citta+
+								"&appid=1e16191367ab76e8faec0be2fb320e01&units=metric&lang=it"; 
+//		private String sito = "http://api.openweathermap.org/data/2.5/forecast?q=termoli&appid=1e16191367ab76e8faec0be2fb320e01&units=metric";
 		public MeteoParser(String Citta) {
 			this.Citta=Citta;
 		}
