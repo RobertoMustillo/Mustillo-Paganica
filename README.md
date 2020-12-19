@@ -50,7 +50,10 @@ In seguito ad una richiesta al servizio viene restituito come risultato un JSON 
 ## Use Case Diagram
 
 <img src ="/Mustillo-Paganica Use Case Diagram.png"/>
-<img src ="/Mustillo-Paganica Class Diagram.png"/>
+
+# UML
+## Class Diagram
+<img src ="/Mustillo-Paganica Class Diagram.jpg"/>
 
 # Autori
 
