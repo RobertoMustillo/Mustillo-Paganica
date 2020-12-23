@@ -19,6 +19,7 @@ public class MeteoServiceImpl implements MeteoService{
 		meteo.getFromMeteoParser("ancona");
 		meteoRepo.put(meteo.getCitta(), meteo);
 	}
+	
 	@Override
 	public void createMeteo(Data meteo) {
 		// TODO Auto-generated method stub
@@ -30,6 +31,35 @@ public class MeteoServiceImpl implements MeteoService{
 		
 	}
 
+	//metodo usato dal controller per passare al GET la citta e l'unità nel path!
+	@Override
+	public void getDataCittaUnits(String citta, String units) {
+		Data meteo = new Data();
+		meteo.setUnits(units);
+		meteo.getFromMeteoParser(citta);
+		meteoRepo.put(meteo.getCitta(), meteo);
+
+	}
+	
+	//metodo usato dal controller per passare al GET la citta!
+		@Override
+		public void getDataCitta(String q) {
+			Data meteo = new Data();
+			meteo.getFromMeteoParser(q);
+			meteoRepo.put(meteo.getCitta(), meteo);
+
+		}
+		
+	//metodo usato dal controller per passare al GET l'unità!	
+	@Override
+	public void getDataUnits(String units) {
+		Data meteo = new Data();
+		meteo.setUnits(units);
+		meteo.getFromMeteoParser("Ancona");
+		meteoRepo.put(meteo.getCitta(), meteo);
+
+	}
+	
 	@Override
 	public Collection<Data> getData() {
 		// TODO Auto-generated method stub

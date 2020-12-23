@@ -10,7 +10,15 @@ public class Data {
 		private double TemperaturaMinima;
 		private double TemperaturaMassima;
 		private long Umidita;
+		private String units = "metric";
 
+
+		public String getUnits() {
+			return units;
+		}
+		public void setUnits(String units) {
+			this.units = units;
+		}
 
 		public Data() {
 			
@@ -27,6 +35,7 @@ public class Data {
 
 		public void getFromMeteoParser(String Citta) {
 			MeteoParser openWeatherParser = new MeteoParser(Citta);
+			openWeatherParser.setUnits(this.units);
 			openWeatherParser.parser();
 			this.Citta = openWeatherParser.getCitta();
 			this.epoch = openWeatherParser.getEpoch();

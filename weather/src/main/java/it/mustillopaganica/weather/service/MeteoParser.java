@@ -19,6 +19,7 @@ public class MeteoParser {
 	private double TemperaturaMinima;
 	private double TemperaturaMassima;
 	private long Umidita;
+	private String units = "metric";
 
 	public MeteoParser(String Citta) {
 		this.Citta=Citta;
@@ -48,10 +49,11 @@ public class MeteoParser {
 		return Umidita;
 	}
 	
+	//metodo che prende le api di openweather e le parsa al model
 	public void parser() {
 		JSONParser parser = new JSONParser();
 		String sito = "http://api.openweathermap.org/data/2.5/forecast?q="+this.Citta+
-				"&appid=1e16191367ab76e8faec0be2fb320e01&units=metric&lang=it";
+				"&appid=1e16191367ab76e8faec0be2fb320e01&units="+this.units+"&lang=it";
 	      try {
 	    	  URL url = new URL(sito);
 			  URLConnection conn = url.openConnection();
@@ -93,6 +95,13 @@ public class MeteoParser {
 	        }
 	}
 
+	public String getUnits() {
+		return units;
+	}
+
+	public void setUnits(String units) {
+		this.units = units;
+	}
 	public double getTemperaturaPercepita() {
 		return TemperaturaPercepita;
 	}
