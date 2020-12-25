@@ -23,8 +23,9 @@ public class Data {
 		public Data() {
 			
 		}
-		public Data(String Citta, String epoch, double temp, double tempPerc,double tempMin, double tempMax, long umidita) {
+		public Data(String Citta, String units,String epoch, double temp, double tempPerc,double tempMin, double tempMax, long umidita) {
 			this.Citta = Citta;
+			this.units = units;
 			this.epoch = epoch;
 			Temperatura=temp;
 			TemperaturaPercepita = tempPerc;

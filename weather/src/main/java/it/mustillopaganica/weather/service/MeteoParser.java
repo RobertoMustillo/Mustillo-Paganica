@@ -6,11 +6,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Vector;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import it.mustillopaganica.weather.model.Data;
 
 public class MeteoParser {
 	private String Citta;
@@ -19,12 +22,21 @@ public class MeteoParser {
 	private double TemperaturaMinima;
 	private double TemperaturaMassima;
 	private long Umidita;
-	private String units = "metric";
+	private String units;
+	private Vector<Data> arr = new Vector<Data>();
+
+	public Vector<Data> getArr() {
+		return arr;
+	}
 
 	public MeteoParser(String Citta) {
 		this.Citta=Citta;
 	}
 
+	public MeteoParser() {
+		
+	}
+	
 	public String getCitta() {
 		return Citta;
 	}
@@ -58,7 +70,6 @@ public class MeteoParser {
 	    	  URL url = new URL(sito);
 			  URLConnection conn = url.openConnection();
 			  BufferedReader in = new BufferedReader(new InputStreamReader (conn.getInputStream()));
-	          //Parsing the contents of the JSON file
 	         
 			  String inputLine;
 	            while ((inputLine = in.readLine()) != null) { 
@@ -81,7 +92,8 @@ public class MeteoParser {
 	                    this.TemperaturaMinima = Double.parseDouble(main.get("temp_min").toString());
 	                    this.TemperaturaMassima = Double.parseDouble(main.get("temp_max").toString());
 	                    this.Umidita = Long.parseLong(main.get("humidity").toString());
-	           
+
+	                    arr = CostruisciArray.Costruisci(Citta, units,epoch, Temperatura, TemperaturaPercepita, TemperaturaMinima, TemperaturaMassima, Umidita);
 
 	                }
 	            }
