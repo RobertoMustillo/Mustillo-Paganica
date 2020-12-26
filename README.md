@@ -51,6 +51,10 @@ In seguito ad una richiesta al servizio viene restituito come risultato un JSON 
 
 <img src ="/Mustillo-Paganica Use Case Diagram.png"/>
 
+# UML
+## Class Diagram
+<img src ="/Mustillo-Paganica Class Diagram.jpg"/>
+
 # Autori
 
 - [Roberto Mustillo](https://github.com/RobertoMustillo) - Contributo 50%
