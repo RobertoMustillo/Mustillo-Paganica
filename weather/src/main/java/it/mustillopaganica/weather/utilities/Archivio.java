@@ -45,17 +45,17 @@ public static Vector<String> citta = new Vector<String>();
 	
 	public static void ScriviFile(Vector<Data> v, String nomefile) {
 		try{
-			BufferedWriter out =
+			BufferedWriter write =
 					new BufferedWriter (new FileWriter (nomefile+".txt"));
-			out.write(v.toString());
-			out.close();
+			write.write(v.toString());
+			write.close();
 			}catch (Exception ex){
 				ex.printStackTrace();;
 			}
         }
 	
 	@Scheduled(fixedRate=10080*60*1000)
-	public static void scriviForecast() {
+	public static void download() {
 		for(String c: citta) {
 			MeteoParser m = new MeteoParser(c);
 			m.parser();

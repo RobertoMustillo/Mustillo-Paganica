@@ -152,6 +152,6 @@ public class Data {
 		}
 		
 		public String toString() {
-			return Citta+","+epoch+","+units+","+Temperatura+","+TemperaturaMassima+","+TemperaturaMinima+","+TemperaturaPercepita+","+Umidita;
+			return "Citta: "+Citta+","+"data: "+epoch+","+"units: "+units+","+"temp: "+Temperatura+","+"temp_max: "+TemperaturaMassima+","+"temp_min: "+TemperaturaMinima+","+"temp_perc: "+TemperaturaPercepita+","+"umidità : "+Umidita;
 		}
 	}

@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import it.mustillopaganica.weather.model.Data;
 import it.mustillopaganica.weather.utilities.MeteoService;
 
+/**
+ * @author rbtms
+ */
 @RestController
 public class MeteoController {
 	@Autowired

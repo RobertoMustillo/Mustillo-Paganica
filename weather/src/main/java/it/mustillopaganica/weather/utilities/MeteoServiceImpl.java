@@ -13,7 +13,9 @@ import it.mustillopaganica.weather.model.DataStats;
 import it.mustillopaganica.weather.service.MeteoParser;
 import it.mustillopaganica.weather.service.ParserStats;
 
-
+/**
+ * @author rbtms
+ */
 @Service
 public class MeteoServiceImpl implements MeteoService{
 	private static Map<String, Vector<Data>> meteoRepo = new HashMap<>();
