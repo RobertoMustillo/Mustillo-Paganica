@@ -150,4 +150,8 @@ public class Data {
 		public void setEpoch(String epoch) {
 			this.epoch = epoch;
 		}
+		
+		public String toString() {
+			return Citta+","+epoch+","+units+","+Temperatura+","+TemperaturaMassima+","+TemperaturaMinima+","+TemperaturaPercepita+","+Umidita;
+		}
 	}
