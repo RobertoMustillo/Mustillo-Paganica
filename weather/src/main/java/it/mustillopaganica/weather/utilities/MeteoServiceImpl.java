@@ -37,16 +37,6 @@ public class MeteoServiceImpl implements MeteoService{
 		
 	}
 	
-	@Override
-	public void updateMeteo(Data meteo) {
-		meteoRepo.clear();
-		MeteoParser m = new MeteoParser(meteo.getCitta());
-		m.setUnits(meteo.getUnits());
-		m.arrClear();
-		m.parser();
-		meteoRepo.put(meteo.getCitta(), m.getArr());
-	}
-	
 	//metodo usato dal controller per passare al GET la citta e l'unità nel path!
 	@Override
 	public void getDataCittaUnits(String citta, String units) {

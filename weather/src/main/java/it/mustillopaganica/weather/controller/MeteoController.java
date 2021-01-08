@@ -44,13 +44,6 @@ public class MeteoController {
 			
 		}
 		
-		@RequestMapping(value = "/data", method = RequestMethod.PUT)
-		public ResponseEntity<Object>
-			updateMeteo(@RequestBody Data meteo){
-			
-			meteoService.updateMeteo(meteo);
-			return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
-		}
 		
 		//filtro per le statistiche
 		@GetMapping("/stats")
