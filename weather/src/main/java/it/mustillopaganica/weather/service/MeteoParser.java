@@ -6,12 +6,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.channels.NonReadableChannelException;
 import java.util.Vector;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
@@ -20,13 +18,13 @@ import it.mustillopaganica.weather.model.Data;
 
 @Service
 public class MeteoParser {
-	private static String Citta;
+	private String Citta;
 	private String epoch;
 	private double Temperatura, TemperaturaPercepita;
 	private double TemperaturaMinima;
 	private double TemperaturaMassima;
 	private long Umidita;
-	private static String units="metric";
+	private String units="metric";
 	private Vector<Data> arr = new Vector<Data>();
 
 	private CostruisciArray costruisciArray = new CostruisciArray();
@@ -47,7 +45,7 @@ public class MeteoParser {
 		
 	}
 	
-	public static String getCitta() {
+	public String getCitta() {
 		return Citta;
 	}
 
@@ -106,7 +104,6 @@ public class MeteoParser {
 	                    this.TemperaturaMassima = Double.parseDouble(main.get("temp_max").toString());
 	                    this.Umidita = Long.parseLong(main.get("humidity").toString());
 
-//	                    arr =  CostruisciArray.Costruisci(Citta, units,epoch, Temperatura, TemperaturaPercepita, TemperaturaMinima, TemperaturaMassima, Umidita);
 	                    
 	                    arr = costruisciArray.Costruisci(Citta, units,epoch, Temperatura, TemperaturaPercepita, TemperaturaMinima, TemperaturaMassima, Umidita);
 	                   
@@ -122,7 +119,7 @@ public class MeteoParser {
 	        }
 	}
 
-	public static String getUnits() {
+	public String getUnits() {
 		return units;
 	}
 

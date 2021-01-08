@@ -18,15 +18,10 @@ import it.mustillopaganica.weather.service.ParserStats;
  */
 @Service
 public class MeteoServiceImpl implements MeteoService{
-	private static Map<String, Vector<Data>> meteoRepo = new HashMap<>();
-	private static Map<String, Vector<DataStats>> statsRepo = new HashMap<>();
+	private Map<String, Vector<Data>> meteoRepo = new HashMap<>();
+	private Map<String, Vector<DataStats>> statsRepo = new HashMap<>();
 
-	public MeteoServiceImpl() {
-		// TODO Auto-generated constructor stub
-/*		Data meteo = new Data();
-		meteo.getFromMeteoParser("ancona");
-		meteoRepo.put(meteo.getCitta(), meteo);
-*/	}
+	public MeteoServiceImpl() {}
 	
 	@Override
 	public void createMeteo(Data meteo) {
@@ -34,19 +29,29 @@ public class MeteoServiceImpl implements MeteoService{
 		if(meteoRepo.containsKey(meteo.getCitta()) && meteoRepo.containsKey(meteo.getUnits())) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Citta esistente...");
 		}
-		
+		meteoRepo.clear();
 		MeteoParser m = new MeteoParser(meteo.getCitta());
 		m.setUnits(meteo.getUnits());
 		m.parser();
 		meteoRepo.put(meteo.getCitta(), m.getArr());
 		
 	}
-
+	
+	@Override
+	public void updateMeteo(Data meteo) {
+		meteoRepo.clear();
+		MeteoParser m = new MeteoParser(meteo.getCitta());
+		m.setUnits(meteo.getUnits());
+		m.arrClear();
+		m.parser();
+		meteoRepo.put(meteo.getCitta(), m.getArr());
+	}
+	
 	//metodo usato dal controller per passare al GET la citta e l'unità nel path!
 	@Override
 	public void getDataCittaUnits(String citta, String units) {
+		meteoRepo.clear();
 		MeteoParser m = new MeteoParser(citta);
-
 		m.setUnits(units);
 		m.parser();
 		meteoRepo.put(m.getCitta(), m.getArr());
@@ -55,6 +60,7 @@ public class MeteoServiceImpl implements MeteoService{
 	//metodo usato dal controller per passare al GET la citta per le stats!
 		@Override
 		public void getStatsCitta(String citta) {
+			statsRepo.clear();
 			ParserStats p = new ParserStats(citta);
 			p.parser();
 			statsRepo.put(p.getCitta(), p.getStats());
@@ -62,7 +68,6 @@ public class MeteoServiceImpl implements MeteoService{
 		
 		@Override
 		public Collection<Vector<Data>> getData() {
-			// TODO Auto-generated method stub
 			return meteoRepo.values();
 		}
 		

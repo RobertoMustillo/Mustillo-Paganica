@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.mustillopaganica.weather.model.Data;
-import it.mustillopaganica.weather.utilities.MeteoService;
+import it.mustillopaganica.weather.utilities.MeteoServiceImpl;
 
 /**
  * @author rbtms
@@ -20,7 +20,7 @@ import it.mustillopaganica.weather.utilities.MeteoService;
 @RestController
 public class MeteoController {
 	@Autowired
-	MeteoService meteoService;
+	MeteoServiceImpl meteoService;
 
 	//ritorna una citta di default e tutte le citta inserite dopo l'avvio
 	@RequestMapping(value = "/metadata", method = RequestMethod.GET)
@@ -37,11 +37,19 @@ public class MeteoController {
 
 		//filtro della citta e dell'unità di misura indicato nei PARAMETRI della GET
 		@GetMapping("/data")
-		public ResponseEntity<Object> getDataCittaUnits2(@RequestParam(name = "q", defaultValue = "") String q,
+		public ResponseEntity<Object> getDataCittaUnits2(@RequestParam(name = "citta", defaultValue = "") String citta,
 									@RequestParam(name = "units", defaultValue = "kelvin") String units){
-			meteoService.getDataCittaUnits(q,units);
+			meteoService.getDataCittaUnits(citta,units);
 			return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 			
+		}
+		
+		@RequestMapping(value = "/data", method = RequestMethod.PUT)
+		public ResponseEntity<Object>
+			updateMeteo(@RequestBody Data meteo){
+			
+			meteoService.updateMeteo(meteo);
+			return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 		}
 		
 		//filtro per le statistiche
@@ -55,6 +63,8 @@ public class MeteoController {
 	@RequestMapping(value = "/data", method = RequestMethod.POST)
 	public ResponseEntity<Object> createMeteo(@RequestBody Data meteo) {
 		meteoService.createMeteo(meteo);
+//		return new ResponseEntity<>(meteoService.createMeteo(meteo), HttpStatus.OK);
 		return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
+
 	}
 }

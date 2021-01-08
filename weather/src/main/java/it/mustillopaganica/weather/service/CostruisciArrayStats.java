@@ -12,7 +12,7 @@ public class CostruisciArrayStats {
 		/**
 		 * contiene tutti i dati per le statistiche del meteo
 		 */
-		private static Vector<DataStats> list = new Vector<DataStats>();
+		private Vector<DataStats> list = new Vector<DataStats>();
 		
 		/**
 		 * Metodo statico che popola il vettore 
@@ -20,7 +20,7 @@ public class CostruisciArrayStats {
 		 * 
 		 * @return 
 		 */
-		public static Vector<DataStats> CostruisciStats(String citta,String epoch, String descrizione,long nuvole, 
+		public Vector<DataStats> CostruisciStats(String citta,String epoch, String descrizione,long nuvole, 
 				double vento, long visibilita)
 		{
 			DataStats infoMeteo = new  DataStats(citta, epoch,descrizione, nuvole, vento, visibilita);

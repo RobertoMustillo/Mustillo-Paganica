@@ -28,6 +28,7 @@ public class ParserStats {
 	private long Nuvole;
 	private double Vento;
 	private long Visibilita;
+	private CostruisciArrayStats costruisciArray = new CostruisciArrayStats();
 
 	public ParserStats() {
 		
@@ -90,7 +91,7 @@ public class ParserStats {
 	                    
 	                    this.Visibilita = Long.parseLong(m.get("visibility").toString());
 	                    
-	                    stats = CostruisciArrayStats.CostruisciStats(Citta, epoch,Descrizione, Nuvole, Vento, Visibilita);
+	                    stats = costruisciArray.CostruisciStats(Citta, epoch,Descrizione, Nuvole, Vento, Visibilita);
 	                }
 	            }
 	            in.close();

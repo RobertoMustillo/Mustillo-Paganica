@@ -49,17 +49,17 @@ public static Vector<String> citta = new Vector<String>();
 					new BufferedWriter (new FileWriter (nomefile+".txt"));
 			write.write(v.toString());
 			write.close();
-			}catch (Exception ex){
-				ex.printStackTrace();;
+			}catch (Exception e){
+				e.printStackTrace();;
 			}
         }
 	
-	@Scheduled(fixedRate=10080*60*1000)
+	@Scheduled(fixedRate=10080*60*1000) // scarica il meteo ogni ora
 	public static void download() {
 		for(String c: citta) {
 			MeteoParser m = new MeteoParser(c);
 			m.parser();
-			ScriviFile(m.getArr(),"archivio");
+			ScriviFile(m.getArr(),"archivio2");
 		}
 	}
 	
