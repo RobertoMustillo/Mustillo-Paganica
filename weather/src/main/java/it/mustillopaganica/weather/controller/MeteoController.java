@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.mustillopaganica.weather.exceptions.MeteoException;
 import it.mustillopaganica.weather.model.Data;
 import it.mustillopaganica.weather.utilities.MeteoServiceImpl;
+import it.mustillopaganica.weather.utilities.Filter;
 
 /**
  * @author rbtms
@@ -44,7 +46,6 @@ public class MeteoController {
 			
 		}
 		
-		
 		//filtro per le statistiche
 		@GetMapping("/stats")
 		public ResponseEntity<Object> getStats(@RequestParam(name = "citta", defaultValue = "") String citta){
@@ -60,4 +61,11 @@ public class MeteoController {
 		return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 
 	}
+	//ritorna una richiesta del body
+		@RequestMapping(value = "/stats", method = RequestMethod.POST)
+		public ResponseEntity<Object> Filter(@RequestBody Filter filter) throws MeteoException {
+			meteoService.getFilter(filter);
+			return new ResponseEntity<>("Periodo trovato", HttpStatus.OK);
+
+		}
 }

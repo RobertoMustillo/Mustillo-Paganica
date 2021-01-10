@@ -53,6 +53,10 @@ public class MeteoParser {
 		Citta = citta;
 	}
 
+	public void setEpoch(String epoch) {
+		this.epoch = epoch;
+	}
+
 	public double getTemperatura() {
 		return Temperatura;
 	}
@@ -67,6 +71,22 @@ public class MeteoParser {
 
 	public long getUmidita() {
 		return Umidita;
+	}
+	
+	// verifica se una certa citta e' presente per una data specifica
+/*		public boolean presente ( Data a) {
+		// contains usa il metodo equals di Data
+		return arr.contains (a);
+		}
+*/	
+	/*metodo che
+	 * filtra il periodo richiesto in una possibile BodyRequest
+	 */
+	public boolean dataPresente( String d) {
+	boolean trovato = false ;
+	for ( Data a : arr )
+	if (a.getEpoch(). equals (d)) trovato = true ;
+	return trovato ;
 	}
 	
 	/*
@@ -106,7 +126,7 @@ public class MeteoParser {
 
 	                    
 	                    arr = costruisciArray.Costruisci(Citta, units,epoch, Temperatura, TemperaturaPercepita, TemperaturaMinima, TemperaturaMassima, Umidita);
-	                   
+	                  
 	                }
 	            }
 	            in.close();

@@ -18,8 +18,8 @@ public class CostruisciArray {
 	public Vector<Data> Costruisci(String Citta, String units,String epoch, double temp, double tempPerc,
 			double tempMin, double tempMax, long umidita)
 	{
-		Data infoMeteo = new  Data(Citta, units,epoch, temp, tempPerc, tempMin, tempMax, umidita);
-		list.add(infoMeteo);
+		Data Meteo = new  Data(Citta, units,epoch, temp, tempPerc, tempMin, tempMax, umidita);
+		list.add(Meteo);
 		return list;
 	}
 }

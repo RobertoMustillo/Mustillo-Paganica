@@ -8,6 +8,8 @@ import java.util.Vector;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import it.mustillopaganica.weather.exceptions.MeteoException;
 import it.mustillopaganica.weather.model.Data;
 import it.mustillopaganica.weather.model.DataStats;
 import it.mustillopaganica.weather.service.MeteoParser;
@@ -46,7 +48,19 @@ public class MeteoServiceImpl implements MeteoService{
 		m.parser();
 		meteoRepo.put(m.getCitta(), m.getArr());
 	}
-	
+
+	//metodo usato dal controller per filtrare il periodo richiesto!
+		@Override
+		public void getFilter(Filter filter) throws MeteoException{
+			meteoRepo.clear();
+			MeteoParser m = new MeteoParser(filter.getCitta());
+			m.setUnits(filter.getUnits());
+			m.parser();
+			if(m.dataPresente(filter.getFrom()) && m.dataPresente(filter.getTo()))
+			meteoRepo.put(m.getCitta(), m.getArr());
+			else throw new MeteoException("data non presente");
+		}
+		
 	//metodo usato dal controller per passare al GET la citta per le stats!
 		@Override
 		public void getStatsCitta(String citta) {

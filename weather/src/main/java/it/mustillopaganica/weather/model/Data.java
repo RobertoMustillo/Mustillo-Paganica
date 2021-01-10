@@ -154,4 +154,12 @@ public class Data {
 		public String toString() {
 			return "Citta: "+Citta+","+"data: "+epoch+","+"units: "+units+","+"temp: "+Temperatura+","+"temp_max: "+TemperaturaMassima+","+"temp_min: "+TemperaturaMinima+","+"temp_perc: "+TemperaturaPercepita+","+"umidità : "+Umidita;
 		}
+		
+		public boolean equals(Object o) {
+			if (o instanceof Data ) {
+				Data a = ( Data ) o;
+				return (epoch.equals(a.epoch) && Citta.equals(a.Citta));
+				}
+				else return false ;			
+		}
 	}
