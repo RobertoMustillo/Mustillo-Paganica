@@ -3,14 +3,9 @@
  */
 package it.mustillopaganica.weather.utilities;
 
-import org.json.simple.JSONObject;
-
-import it.mustillopaganica.weather.exceptions.MeteoException;
-import it.mustillopaganica.weather.model.Data;
-import it.mustillopaganica.weather.service.MeteoParser;
-
 /**
- * @author rbtms
+ * Classe che implementa un tipo di Filtro possibile
+ *@author rbtms
  *
  */
 public class Filter {
@@ -18,40 +13,22 @@ public class Filter {
 	private String units;
 	private String from;
 	private String to;
-	protected JSONObject filter;
+	
 /*
  * @param filter filtro di ricerca ricevuto nelle API
  */
-	public Filter(String citta, String units, String from, String to, JSONObject filter) {
+	public Filter(String citta, String units, String from, String to) {
 	super();
 	this.citta = citta;
 	this.units = units;
 	this.from = from;
 	this.to = to;
-	this.filter = filter;
-}
-
-	/*
-	 * filtra il periodo richiesto in una possibile BodyRequest
-	 */
-	public boolean periodoPresente(MeteoParser m,String from,String to) throws MeteoException{
-
-		from = (String) this.filter.get("from");
-		to = (String) this.filter.get("to");
-		
-		boolean trovato = false ;
-		for ( Data a : m.getArr() )
-		if (a.getEpoch().equals(from )) { 
-			trovato = true ;
-			if(a.getEpoch().equals(to)) {
-				trovato = true;
-				break;
-			}
-		}
-		if(!trovato) throw new MeteoException("date non trovate");
-		return trovato ;	
 	}
-	
+
+	public Filter() {
+		
+	}
+
 	public String getFrom() {
 		return from;
 	}

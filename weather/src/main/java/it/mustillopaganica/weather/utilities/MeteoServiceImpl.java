@@ -14,6 +14,7 @@ import it.mustillopaganica.weather.model.Data;
 import it.mustillopaganica.weather.model.DataStats;
 import it.mustillopaganica.weather.service.MeteoParser;
 import it.mustillopaganica.weather.service.ParserStats;
+import it.mustillopaganica.weather.service.Period;
 
 /**
  * @author rbtms
@@ -51,13 +52,19 @@ public class MeteoServiceImpl implements MeteoService{
 
 	//metodo usato dal controller per filtrare il periodo richiesto!
 		@Override
-		public void getFilter(Filter filter) throws MeteoException{
+		public void getFilter(Filter fil) throws MeteoException{
 			meteoRepo.clear();
-			MeteoParser m = new MeteoParser(filter.getCitta());
-			m.setUnits(filter.getUnits());
+			MeteoParser m = new MeteoParser(fil.getCitta());
+			m.setUnits(fil.getUnits());
 			m.parser();
-			if(m.dataPresente(filter.getFrom()) && m.dataPresente(filter.getTo()))
-			meteoRepo.put(m.getCitta(), m.getArr());
+			if(m.dataPresente(fil.getFrom()) && m.dataPresente(fil.getTo())) { //se la data è presente 
+																			//effettua un parser filtrato			
+				Period period = new Period(fil.getCitta());
+				period.filter.setFrom(fil.getFrom());
+				period.filter.setTo(fil.getTo());
+				period.parser();
+				meteoRepo.put(period.getCitta(), period.getArr());
+			}
 			else throw new MeteoException("data non presente");
 		}
 		

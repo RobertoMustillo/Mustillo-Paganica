@@ -23,6 +23,14 @@ public class DataStats {
 			Vento = vento;
 			Visibilita = visibilita;
 		}
+		
+		public boolean equals(Object o) {
+			if (o instanceof DataStats ) {
+				DataStats a = ( DataStats ) o;
+				return (Epoch.equals(a.Epoch) && Citta.equals(a.Citta));
+				}
+				else return false ;			
+		}
 		public String getEpoch() {
 			return Epoch;
 		}

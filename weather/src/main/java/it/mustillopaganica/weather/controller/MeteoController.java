@@ -24,7 +24,9 @@ public class MeteoController {
 	@Autowired
 	MeteoServiceImpl meteoService;
 
-	//ritorna una citta di default e tutte le citta inserite dopo l'avvio
+	/*
+	 * Ritorna il meteo di tutte le citta presenti nell'archivio
+	 */
 	@RequestMapping(value = "/metadata", method = RequestMethod.GET)
 	   public ResponseEntity<Object> getData() {
 	      return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
@@ -47,7 +49,7 @@ public class MeteoController {
 		}
 		
 		//filtro per le statistiche
-		@GetMapping("/stats")
+		@GetMapping("/config")
 		public ResponseEntity<Object> getStats(@RequestParam(name = "citta", defaultValue = "") String citta){
 			meteoService.getStatsCitta(citta);
 			return new ResponseEntity<>(meteoService.getDataStats(), HttpStatus.OK);
@@ -61,11 +63,11 @@ public class MeteoController {
 		return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 
 	}
-	//ritorna una richiesta del body
-		@RequestMapping(value = "/stats", method = RequestMethod.POST)
+	//Filtro di una data richiesta dall utente
+		@RequestMapping(value = "/filter", method = RequestMethod.POST)
 		public ResponseEntity<Object> Filter(@RequestBody Filter filter) throws MeteoException {
 			meteoService.getFilter(filter);
-			return new ResponseEntity<>("Periodo trovato", HttpStatus.OK);
+			return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 
 		}
 }
