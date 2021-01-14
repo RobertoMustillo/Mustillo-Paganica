@@ -23,6 +23,16 @@ public class Data {
 		public Data() {
 			
 		}
+		/**Costruttore completo
+		 * @param Citta     Nome della città
+		 * @param units    
+		 * @param epoch     Data 
+		 * @param temp      Temperatura della città
+		 * @param tempPerc  Temperatura percepita della città
+		 * @param tempMin   Temperatura minima della città
+		 * @param tempMax   Temperatura massima della città
+		 * @param umidita   Umidità della città
+		*/
 		public Data(String Citta, String units,String epoch, double temp, double tempPerc,double tempMin, double tempMax, long umidita) {
 			this.Citta = Citta;
 			this.units = units;
@@ -48,15 +58,16 @@ public class Data {
 		}
 
 		/**
-		 * Returns Citta.
+		 * Ritorna il nome della Città.
 		 * @return Citta 
 		 */
+		
 		public String getCitta() {
 			return this.Citta;
 		}
 
 		/**
-		 * Sets a value to attribute NomeCitta. 
+		 * Metodo che setta il nome della Città. 
 		 * @param newNomeCitta 
 		 */
 		public void setCitta(String newCitta) {
@@ -64,7 +75,7 @@ public class Data {
 		}
 
 		/**
-		 * Returns Temperatura.
+		 * Ritorna la temperatura della Città.
 		 * @return Temperatura 
 		 */
 		public double getTemperatura() {
@@ -72,7 +83,7 @@ public class Data {
 		}
 
 		/**
-		 * Sets a value to attribute Temperatura. 
+		 * Metodo che setta la temperatura della Città. 
 		 * @param newTemperatura 
 		 */
 		public void setTemperatura(double newTemperatura) {
@@ -80,7 +91,7 @@ public class Data {
 		}
 
 		/**
-		 * Returns TemperaturaMinima.
+		 * Ritorna la temperatura minima della Città.
 		 * @return TemperaturaMinima 
 		 */
 		public double getTemperaturaMinima() {
@@ -88,7 +99,7 @@ public class Data {
 		}
 
 		/**
-		 * Sets a value to attribute TemperaturaMinima. 
+		 * Metodo che setta la temperatura minima della Città. 
 		 * @param newTemperaturaMinima 
 		 */
 		public void setTemperaturaMinima(double newTemperaturaMinima) {
@@ -96,7 +107,7 @@ public class Data {
 		}
 
 		/**
-		 * Returns TemperaturaMassima.
+		 * Ritorna la temperatura massima.
 		 * @return TemperaturaMassima 
 		 */
 		public double getTemperaturaMassima() {
@@ -104,7 +115,7 @@ public class Data {
 		}
 
 		/**
-		 * Sets a value to attribute TemperaturaMassima. 
+		 * Metodo che setta la temperatura massima. 
 		 * @param newTemperaturaMassima 
 		 */
 		public void setTemperaturaMassima(double newTemperaturaMassima) {
@@ -112,7 +123,7 @@ public class Data {
 		}
 
 		/**
-		 * Returns Umidita.
+		 * Ritorna l'umidita della città.
 		 * @return Umidita 
 		 */
 		public long getUmidita() {
@@ -120,7 +131,7 @@ public class Data {
 		}
 
 		/**
-		 * Sets a value to attribute Umidita. 
+		 * Metodo che setta l'umidita della città. 
 		 * @param newUmidita 
 		 */
 		public void setUmidita(long newUmidita) {
@@ -128,7 +139,7 @@ public class Data {
 		}
 
 		/**
-		 * Returns TemperaturaPercepita.
+		 * Ritorna la temperatura percepita della città.
 		 * @return TemperaturaPercepita 
 		 */
 		public double getTemperaturaPercepita() {
@@ -136,17 +147,23 @@ public class Data {
 		}
 
 		/**
-		 * Sets a value to attribute TemperaturaPercepita. 
+		 * Metodo che setta la temperatura percepita della città. 
 		 * @param newTemperaturaPercepita 
 		 */
 		public void setTemperaturaPercepita(double newTemperaturaPercepita) {
 			this.TemperaturaPercepita = newTemperaturaPercepita;
 		}
-
+		/**
+		 * Ritorna la data.
+		 * @return epoch
+		 */
 			public String getEpoch() {
 			return epoch;
 		}
-
+		/**
+	     * Metodo che setta la data. 
+		 * @param newTemperaturaPercepita 
+	    */
 		public void setEpoch(String epoch) {
 			this.epoch = epoch;
 		}
