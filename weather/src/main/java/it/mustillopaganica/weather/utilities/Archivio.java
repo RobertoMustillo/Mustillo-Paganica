@@ -5,12 +5,14 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Vector;
-
+import org.json.simple.JSONArray;
+import org.json.simple.parser.ParseException;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import it.mustillopaganica.weather.model.Data;
 import it.mustillopaganica.weather.service.MeteoParser;
 
 /**
@@ -19,10 +21,17 @@ import it.mustillopaganica.weather.service.MeteoParser;
  * @Component annotazione che definisce la classe come componente autogestito da Spring
  */
 @Component
+@Service
 public class Archivio {
 	
 public static Vector<String> citta = new Vector<String>();
 	
+/*
+ * Vettore che raccoglie i dati delle citta dell'archivio
+ * sotto forma di JSONArray
+ */
+public static Vector<JSONArray> meteoRepo = new Vector<JSONArray>();
+
 	@SuppressWarnings("resource")
 	public static Vector<String> popola(){
 		
@@ -43,11 +52,11 @@ public static Vector<String> citta = new Vector<String>();
 		return citta;
 	}
 	
-	public static void ScriviFile(Vector<Data> v, String nomefile) {
+	public static void ScriviFile(Collection<JSONArray> collection, String nomefile) {
 		try{
 			BufferedWriter write =
 					new BufferedWriter (new FileWriter (nomefile+".txt"));
-			write.write(v.toString());
+			write.write(collection.toString());
 			write.close();
 			}catch (Exception e){
 				e.printStackTrace();;
@@ -55,12 +64,15 @@ public static Vector<String> citta = new Vector<String>();
         }
 	
 	@Scheduled(fixedRate=10080*60*1000) // scarica il meteo ogni ora
-	public static void download() {
+	public static void download() throws ParseException {
 		for(String c: citta) {
 			MeteoParser m = new MeteoParser(c);
 			m.parser();
-			ScriviFile(m.getArr(),"archivio2");
+			meteoRepo.add(m.getJsonArray());
+
 		}
+		ScriviFile(meteoRepo,"archivio");
+
 	}
 	
 	

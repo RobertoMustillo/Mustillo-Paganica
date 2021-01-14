@@ -7,14 +7,14 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Vector;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
-
 import it.mustillopaganica.weather.model.Data;
+import it.mustillopaganica.weather.utilities.ParsingJSON;
 
 @Service
 public class MeteoParser {
@@ -27,6 +27,7 @@ public class MeteoParser {
 	private String units="metric";
 	private Vector<Data> arr = new Vector<Data>();
 
+//	public JSONArray jsonArray = new JSONArray();
 	private CostruisciArray costruisciArray = new CostruisciArray();
 	
 	public Vector<Data> getArr() {
@@ -95,8 +96,10 @@ public class MeteoParser {
 	 */
 	public void parser() {
 		JSONParser parser = new JSONParser();
+		String APIKey = "1e16191367ab76e8faec0be2fb320e01";
+
 		String sito = "http://api.openweathermap.org/data/2.5/forecast?q="+this.Citta+
-				"&appid=1e16191367ab76e8faec0be2fb320e01&units="+this.units+"&lang=it";
+				"&appid="+APIKey+"&units="+this.units+"&lang=it";
 	      try {
 	    	  URL url = new URL(sito);
 			  URLConnection conn = url.openConnection();
@@ -123,13 +126,17 @@ public class MeteoParser {
 	                    this.TemperaturaMinima = Double.parseDouble(main.get("temp_min").toString());
 	                    this.TemperaturaMassima = Double.parseDouble(main.get("temp_max").toString());
 	                    this.Umidita = Long.parseLong(main.get("humidity").toString());
-
-	                    
+                 
 	                    arr = costruisciArray.Costruisci(Citta, units,epoch, Temperatura, TemperaturaPercepita, TemperaturaMinima, TemperaturaMassima, Umidita);
-	                  
+//	                    jsonArray = (JSONArray) JSONValue.parseWithException(ParsingJSON.ParsingToJSON(arr));
+	          	      	
 	                }
 	            }
+	     
+
 	            in.close();
+	            
+
 	       } catch (FileNotFoundException e) {
 	            e.printStackTrace();
 	        } catch (IOException e) {
@@ -137,6 +144,15 @@ public class MeteoParser {
 	        } catch (ParseException e) {
 	            e.printStackTrace();
 	        }
+	      
+	      
+	}
+	
+	public JSONArray getJsonArray() throws ParseException {
+		JSONArray jsonArray = new JSONArray();
+        jsonArray = (JSONArray) JSONValue.parseWithException(ParsingJSON.ParsingToJSON(arr));
+        
+        return jsonArray;
 	}
 
 	public String getUnits() {
