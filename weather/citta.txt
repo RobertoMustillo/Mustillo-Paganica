@@ -4,3 +4,4 @@ Milano
 Bergamo
 Napoli
 Benevento
+Torino
