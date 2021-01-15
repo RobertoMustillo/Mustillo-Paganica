@@ -2,6 +2,10 @@ package it.mustillopaganica.weather.model;
 
 import it.mustillopaganica.weather.service.MeteoParser;
 
+/**
+ * @author aldop
+ * 
+ */
 public class Data {
 		private String Citta;
 		private String epoch;
@@ -25,7 +29,7 @@ public class Data {
 		}
 		/**Costruttore completo
 		 * @param Citta     Nome della città
-		 * @param units    
+		 * @param units     sistema di misura
 		 * @param epoch     Data 
 		 * @param temp      Temperatura della città
 		 * @param tempPerc  Temperatura percepita della città
@@ -56,7 +60,7 @@ public class Data {
 			this.TemperaturaMinima = openWeatherParser.getTemperaturaMinima();
 			this.Umidita = openWeatherParser.getUmidita();
 		}
-
+        
 		/**
 		 * Ritorna il nome della Città.
 		 * @return Citta 

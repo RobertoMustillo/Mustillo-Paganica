@@ -37,7 +37,9 @@ public class MeteoParser {
 	public void arrClear() {
 		arr.clear();
 	}
-	
+	/**
+	 * @param è il nome della città di cui si vuole conoscere le previsioni meteo
+	 */
 	public MeteoParser(String Citta) {
 		this.Citta=Citta;
 	}
@@ -49,27 +51,45 @@ public class MeteoParser {
 	public String getCitta() {
 		return Citta;
 	}
-
+    /**
+     * 
+     * @param citta
+     */
 	public void setCitta(String citta) {
 		Citta = citta;
 	}
-
+    /**
+     * 
+     * @param epoch
+     */
 	public void setEpoch(String epoch) {
 		this.epoch = epoch;
 	}
-
+    /**
+     * 
+     * @return Temperatura
+     */
 	public double getTemperatura() {
 		return Temperatura;
 	}
-
+    /**
+     * 
+     * @return TemperaturaMinima
+     */
 	public double getTemperaturaMinima() {
 		return TemperaturaMinima;
 	}
-
+    /**
+     * 
+     * @return TemperaturaMassima
+     */
 	public double getTemperaturaMassima() {
 		return TemperaturaMassima;
 	}
-
+    /**
+     * 
+     * @return Umidita
+     */
 	public long getUmidita() {
 		return Umidita;
 	}
@@ -93,6 +113,7 @@ public class MeteoParser {
 	/*
 	 * metodo che prende le api di openweather e le parsa al model
 	 * con le sole informazioni necessarie 
+	 * 
 	 */
 	public void parser() {
 		JSONParser parser = new JSONParser();
@@ -155,17 +176,31 @@ public class MeteoParser {
         return jsonArray;
 	}
 
+    /**
+     * 
+     * @return units
+     */
 	public String getUnits() {
 		return units;
 	}
-
+    /**
+     * 
+     * @param units
+     */
 	public void setUnits(String units) {
 		this.units = units;
 	}
+	/**
+	 * 
+	 * @return TemperaturaPercepita
+	 */
 	public double getTemperaturaPercepita() {
 		return TemperaturaPercepita;
 	}
-
+    /**
+     * 
+     * @return epoch
+     */
 	public String getEpoch() {
 		return epoch;
 	}

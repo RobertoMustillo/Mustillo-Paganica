@@ -5,7 +5,7 @@ import java.util.Vector;
 
 /**
  * @author rbtms
- *
+ * @author aldop
  */
 public class CostruisciArrayStats {
 
@@ -17,8 +17,12 @@ public class CostruisciArrayStats {
 		/**
 		 * Metodo statico che popola il vettore 
 		 * @param citta
-		 * 
-		 * @return 
+		 * @param epoch
+		 * @param descrizione
+		 * @param nuvole
+		 * @param vento
+		 * @param visibilita
+		 * @return list
 		 */
 		public Vector<DataStats> CostruisciStats(String citta,String epoch, String descrizione,long nuvole, 
 				double vento, long visibilita)

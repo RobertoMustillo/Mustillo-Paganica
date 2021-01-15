@@ -7,7 +7,11 @@ import it.mustillopaganica.weather.exceptions.MeteoException;
 import it.mustillopaganica.weather.model.Data;
 import it.mustillopaganica.weather.model.DataStats;
 
-
+/**
+ * Questa classe è l'interfaccia di MeteoServiceImpl e contiene i metodi richiamati dal controller
+ * @author aldop
+ *
+ */
 public interface MeteoService {
 	public abstract void createMeteo(Data meteo);
 	public abstract void getDataCittaUnits(String citta, String units);

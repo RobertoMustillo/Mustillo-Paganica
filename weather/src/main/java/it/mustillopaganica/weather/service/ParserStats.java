@@ -18,7 +18,7 @@ import it.mustillopaganica.weather.model.DataStats;
 
 /**
  * @author rbtms
- *
+ * @author aldop
  */
 public class ParserStats {
 	private Vector<DataStats> stats = new Vector<DataStats>();
@@ -33,23 +33,45 @@ public class ParserStats {
 	public ParserStats() {
 		
 	}
+	/**
+	 * @param è il nome della città di cui si vuole conoscere le statistiche
+	 */
 	public ParserStats(String citta) {
 		this.Citta=citta;
 	}
+	/**
+	 * 
+	 * @return Citta
+	 */
 	public String getCitta() {
 		return Citta;
 	}
+	/**
+	 * 
+	 * @param citta
+	 */
 	public void setCitta(String citta) {
 		Citta = citta;
 	}
+	/**
+	 * 
+	 * @return stats
+	 */
 	public Vector<DataStats> getStats() {
 		return stats;
 	}
-
+    /**
+     * 
+     * @param stats
+     */
 	public void setStats(Vector<DataStats> stats) {
 		this.stats = stats;
 	}
-	
+	/*
+	 * metodo che prende l'api di openweather
+	 * e restituisce le previsioni meteo della città richiesta
+	 * 
+	 */
 	public void parser() {
 		JSONParser parser = new JSONParser();
 		String sito = "http://api.openweathermap.org/data/2.5/forecast?q="+this.Citta+

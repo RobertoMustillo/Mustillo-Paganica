@@ -4,7 +4,7 @@ package it.mustillopaganica.weather.model;
 public class DataStats {
 	/**
 	 * @author rbtms
-	 * 
+	 * @author aldop
 	 */	
 		private String Citta;
 		private String Epoch;
