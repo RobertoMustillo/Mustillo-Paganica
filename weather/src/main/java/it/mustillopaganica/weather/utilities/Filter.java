@@ -14,8 +14,12 @@ public class Filter {
 	private String from;
 	private String to;
 	
-/*
+/**
  * @param filter filtro di ricerca ricevuto nelle API
+ * @param citta  nome della città
+ * @param units  sistema di misura
+ * @param from
+ * @param to
  */
 	public Filter(String citta, String units, String from, String to) {
 	super();
@@ -28,32 +32,59 @@ public class Filter {
 	public Filter() {
 		
 	}
-
+    /**
+     * 
+     * @return from
+     */
 	public String getFrom() {
 		return from;
 	}
+	/**
+	 * 
+	 * @param from
+	 */
 	public void setFrom(String from) {
 		this.from = from;
 	}
+	/**
+	 * 
+	 * @return to
+	 */
 	public String getTo() {
 		return to;
 	}
+	/**
+	 * 
+	 * @param to
+	 */
 	public void setTo(String to) {
 		this.to = to;
 	}
-
+    /**
+     * 
+     * @return units
+     */
 	public String getUnits() {
 		return units;
 	}
-
+    /**
+     * 
+     * @param units
+     */
 	public void setUnits(String units) {
 		this.units = units;
 	}
-
+    /**
+     * 
+     * @return citta
+     */
 	public String getCitta() {
 		return citta;
 	}
-
+    /**
+     * 
+     * @param citta
+     */
 	public void setCitta(String citta) {
 		this.citta = citta;
 	}

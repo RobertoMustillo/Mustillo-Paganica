@@ -24,7 +24,7 @@ import it.mustillopaganica.weather.utilities.Filter;
  * Classe che utilizza la classe Filter
  * per effettuare un parser filtrato
  * @author rbtms
- *
+ * @author aldop
  */
 @Service
 public class Period {
@@ -111,75 +111,129 @@ public class Period {
 	            e.printStackTrace();
 	        }
 	}
-	
+	/**
+	 * 
+	 * @return Citta
+	 */
 	public String getCitta() {
 		return Citta;
 	}
-
+    /**
+     * 
+     * @param citta
+     */
 	public void setCitta(String citta) {
 		Citta = citta;
 	}
-
+    /**
+     * 
+     * @return epoch
+     */
 	public String getEpoch() {
 		return epoch;
 	}
-
+    /**
+     * 
+     * @param epoch
+     */
 	public void setEpoch(String epoch) {
 		this.epoch = epoch;
 	}
-
+    /**
+     * 
+     * @return Temperatura
+     */
 	public double getTemperatura() {
 		return Temperatura;
 	}
-
+    /**
+     * 
+     * @param temperatura
+     */
 	public void setTemperatura(double temperatura) {
 		Temperatura = temperatura;
 	}
-
+    /**
+     * 
+     * @return TemperaturaPercepita
+     */
 	public double getTemperaturaPercepita() {
 		return TemperaturaPercepita;
 	}
-
+    /**
+     * 
+     * @param temperaturaPercepita
+     */
 	public void setTemperaturaPercepita(double temperaturaPercepita) {
 		TemperaturaPercepita = temperaturaPercepita;
 	}
-
+    /**
+     * 
+     * @return TemperaturaMinima
+     */
 	public double getTemperaturaMinima() {
 		return TemperaturaMinima;
 	}
-
+    /**
+     * 
+     * @param temperaturaMinima
+     */
 	public void setTemperaturaMinima(double temperaturaMinima) {
 		TemperaturaMinima = temperaturaMinima;
 	}
-
+    /**
+     * 
+     * @return TemperaturaMassima
+     */
 	public double getTemperaturaMassima() {
 		return TemperaturaMassima;
 	}
-
+    /**
+     * 
+     * @param temperaturaMassima
+     */
 	public void setTemperaturaMassima(double temperaturaMassima) {
 		TemperaturaMassima = temperaturaMassima;
 	}
-
+    /**
+     * 
+     * @return Umidita
+     */
 	public long getUmidita() {
 		return Umidita;
 	}
-
+    /**
+     * 
+     * @param umidita
+     */
 	public void setUmidita(long umidita) {
 		Umidita = umidita;
 	}
-
+    /**
+     * 
+     * @return units
+     */
 	public String getUnits() {
 		return units;
 	}
-
+    /**
+     * 
+     * @param units
+     */
 	public void setUnits(String units) {
 		this.units = units;
 	}
-
+    /**
+     * 
+     * @return arr
+     */
 	public Vector<Data> getArr() {
 		return arr;
 	}
-
+    /**
+     * 
+     * @param arr
+     */
 	public void setArr(Vector<Data> arr) {
 		this.arr = arr;
 	}
@@ -191,7 +245,10 @@ public class Period {
 	public void setCostruisciArray(CostruisciArray costruisciArray) {
 		this.costruisciArray = costruisciArray;
 	}
-
+    /**
+     * 
+     * @param Citta
+     */
 	public Period(String Citta) {
 		this.Citta=Citta;
 	}

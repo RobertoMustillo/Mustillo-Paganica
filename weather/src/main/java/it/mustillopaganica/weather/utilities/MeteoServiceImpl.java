@@ -19,6 +19,7 @@ import it.mustillopaganica.weather.service.Period;
 
 /**
  * @author rbtms
+ * @author aldop
  */
 @Service
 public class MeteoServiceImpl implements MeteoService{
