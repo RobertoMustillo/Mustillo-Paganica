@@ -7,6 +7,9 @@ import com.google.gson.GsonBuilder;
 
 import it.mustillopaganica.weather.model.Data;
 
+/**
+ * @author rbtms
+ */
 public class ParsingJSON {
 	/**
 	 * Metodo statico che passato il vector dei data , lo converta nel formato JSON.

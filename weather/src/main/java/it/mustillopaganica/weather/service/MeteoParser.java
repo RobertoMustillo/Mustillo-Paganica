@@ -102,6 +102,7 @@ public class MeteoParser {
 */	
 	/*metodo che
 	 * filtra il periodo richiesto in una possibile BodyRequest
+	 * verificandone la presenza
 	 */
 	public boolean dataPresente( String d) {
 	boolean trovato = false ;

@@ -74,7 +74,9 @@ public class MeteoServiceImpl implements MeteoService{
 		public Stats getStats(Stats body) throws MeteoException{
 			meteoRepo.clear();
 			Statistiche statistiche = new Statistiche();
-			statistiche.setId(body.getId());
+	//		statistiche.setId(body.getId());
+			
+			
 			statistiche.getSTATS();
 
 			body.setTempMax(statistiche.getTempMax());
@@ -85,7 +87,21 @@ public class MeteoServiceImpl implements MeteoService{
 			body.setMediaPercepita(statistiche.getMedia2());
 			body.setVarianza(statistiche.getVarianza());
 			body.setVarianzaPercepita(statistiche.getVarianza2());
-			return body;
+			
+			if(!(statistiche.cittaPresente(body.getCitta()))) {
+				throw new MeteoException("Puoi scegliere una tra queste città:"
+						+ "\nTermoli"
+						+ "\nAncona"
+						+ "\nMilano"
+						+ "\nBergamo"
+						+ "\nNapoli"
+						+ "\nBenevento"
+						+ "\nTorino");
+			}
+			else {
+				return body;
+			}
+			
 					
 			
 		}
