@@ -4,6 +4,7 @@ import it.mustillopaganica.weather.service.MeteoParser;
 
 /**
  * @author aldop
+ * @author rbtms
  * 
  */
 public class Data {
