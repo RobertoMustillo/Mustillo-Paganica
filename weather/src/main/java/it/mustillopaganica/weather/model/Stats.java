@@ -151,10 +151,6 @@ public class Stats {
      * 
      * @param id
      */
-	public void setCitta(Integer id) {
-		
-	}
-
 	public void setId(Integer id) {
 
 		this.id = id;
