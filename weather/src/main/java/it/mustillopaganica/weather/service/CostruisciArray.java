@@ -4,6 +4,10 @@ import java.util.Vector;
 
 import it.mustillopaganica.weather.model.Data;;
 
+/*
+ * @author rbtms
+ * 
+ */
 public class CostruisciArray {
 	/**
 	 * contiene tutti i dati del meteo
@@ -13,7 +17,7 @@ public class CostruisciArray {
 	/**
 	 * Metodo statico che popola il vettore 
 	 * @param citta
-	 * @return 
+	 * @return list
 	 */
 	public Vector<Data> Costruisci(String Citta, String units,String epoch, double temp, double tempPerc,
 			double tempMin, double tempMax, long umidita)

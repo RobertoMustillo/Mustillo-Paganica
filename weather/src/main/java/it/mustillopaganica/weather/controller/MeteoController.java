@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.mustillopaganica.weather.exceptions.MeteoException;
 import it.mustillopaganica.weather.model.Data;
+import it.mustillopaganica.weather.model.Stats;
 import it.mustillopaganica.weather.utilities.MeteoServiceImpl;
 import it.mustillopaganica.weather.utilities.Filter;
 
@@ -49,8 +50,8 @@ public class MeteoController {
 		}
 		
 		//filtro per le statistiche
-		@GetMapping("/config")
-		public ResponseEntity<Object> getStats(@RequestParam(name = "citta", defaultValue = "") String citta){
+		@GetMapping("/previsioni")
+		public ResponseEntity<Object> getCondizioniMeteo(@RequestParam(name = "citta", defaultValue = "") String citta){
 			meteoService.getStatsCitta(citta);
 			return new ResponseEntity<>(meteoService.getDataStats(), HttpStatus.OK);
 		}
@@ -69,5 +70,38 @@ public class MeteoController {
 			meteoService.getFilter(filter);
 			return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 
+		}
+		
+		//STATS
+		@RequestMapping(value = "/stats", method = RequestMethod.POST)
+		public Stats STATS(@RequestBody Stats body) throws MeteoException {
+
+			Integer id = 0;
+			
+			switch (body.getCitta()) {
+			case "Termoli":
+				id = 0;
+				break;
+			case "Ancona":
+				id = 1;
+				break;
+			case "Milano":
+				id = 2;
+				break;
+			case "Bergamo":
+				id = 3;
+				break;
+			case "Napoli":
+				id = 4;
+				break;
+			case "Benevento":
+				id = 5;
+				break;
+			case "Torino":
+				id = 6;
+				break;		
+			}
+
+			return meteoService.getStats(body);
 		}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import it.mustillopaganica.weather.exceptions.MeteoException;
 import it.mustillopaganica.weather.model.Data;
 import it.mustillopaganica.weather.model.DataStats;
+import it.mustillopaganica.weather.model.Stats;
 import it.mustillopaganica.weather.service.MeteoParser;
 import it.mustillopaganica.weather.service.ParserStats;
 import it.mustillopaganica.weather.service.Period;
@@ -68,6 +69,25 @@ public class MeteoServiceImpl implements MeteoService{
 			else throw new MeteoException("data non presente");
 		}
 		
+		@Override
+		public Stats getStats(Stats body) throws MeteoException{
+			meteoRepo.clear();
+			Statistiche statistiche = new Statistiche();
+			statistiche.setId(body.getId());
+			statistiche.getSTATS();
+
+			body.setTempMax(statistiche.getTempMax());
+			body.setTempMin(statistiche.getTempMin());
+			body.setTempPercMax(statistiche.getTempPercMax());
+			body.setTempPercMin(statistiche.getTempPercMin());
+			body.setMedia(statistiche.getMedia());
+			body.setMediaPercepita(statistiche.getMedia2());
+			body.setVarianza(statistiche.getVarianza());
+			body.setVarianzaPercepita(statistiche.getVarianza2());
+			return body;
+					
+			
+		}
 	//metodo usato dal controller per passare al GET la citta per le stats!
 		@Override
 		public void getStatsCitta(String citta) {

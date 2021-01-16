@@ -152,7 +152,9 @@ public class Data {
 		}
 		
 		public String toString() {
-			return "Citta: "+Citta+","+"data: "+epoch+","+"units: "+units+","+"temp: "+Temperatura+","+"temp_max: "+TemperaturaMassima+","+"temp_min: "+TemperaturaMinima+","+"temp_perc: "+TemperaturaPercepita+","+"umidita : "+Umidita;
+			return "Citta: "+Citta+","+"data: "+epoch+","+"units: "+units+","+"temp: "+Temperatura+","+
+					"temp_max: "+TemperaturaMassima+","+"temp_min: "+TemperaturaMinima+","+
+					"temp_perc: "+TemperaturaPercepita+","+"umidita : "+Umidita;
 		}
 		
 		public boolean equals(Object o) {
