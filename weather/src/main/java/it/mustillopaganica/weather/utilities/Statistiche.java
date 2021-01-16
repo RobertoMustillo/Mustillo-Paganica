@@ -149,7 +149,7 @@ public class Statistiche {
 	}
 
 	/**
-	 * @return il massimo della TemperaturaPercepita
+	 * @return il minimo della TemperaturaPercepita
 	 * @throws MeteoException 
 	 */
 	public double getTempPercMin() throws MeteoException {
@@ -231,44 +231,75 @@ public class Statistiche {
 			return varianza2;
 		}
 	}
+	/**
+	 * 
+	 * @param media
+	 */
 	public void setMedia(double media) {
 		this.media = media;
 	}
-
+    /**
+     * 
+     * @param media2
+     */
 	public void setMedia2(double media2) {
 		this.media2 = media2;
 	}
-
+    /**
+     * 
+     * @param varianza
+     */
 	public void setVarianza(double varianza) {
 		this.varianza = varianza;
 	}
-
+    /**
+     * 
+     * @param varianza2
+     */
 	public void setVarianza2(double varianza2) {
 		this.varianza2 = varianza2;
 	}
 
 
-	
+	/**
+	 * 
+	 * @return Temperatura
+	 */
 	public double getTemperatura() {
 		return Temperatura;
 	}
-
+    /**
+     * 
+     * @param temperatura
+     */
 	public void setTemperatura(double temperatura) {
 		Temperatura = temperatura;
 	}
-
+    /**
+     * 
+     * @return TemperaturaPercepita
+     */
 	public double getTemperaturaPercepita() {
 		return TemperaturaPercepita;
 	}
-
+    /**
+     * 
+     * @param temperaturaPercepita
+     */
 	public void setTemperaturaPercepita(double temperaturaPercepita) {
 		TemperaturaPercepita = temperaturaPercepita;
 	}
-
+    /**
+     * 
+     * @return id
+     */
 	public Integer getId() {
 		return id;
 	}
-
+    /**
+     * 
+     * @param id
+     */
 	public void setId(Integer id) {
 		this.id = id;
 	}
