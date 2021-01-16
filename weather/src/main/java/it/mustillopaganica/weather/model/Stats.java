@@ -146,11 +146,17 @@ public class Stats {
 	public Integer getId() {
 		return id;
 	}
+
     /**
      * 
      * @param id
      */
 	public void setCitta(Integer id) {
+		
+	}
+
+	public void setId(Integer id) {
+
 		this.id = id;
 	}
     /**
@@ -169,3 +175,4 @@ public class Stats {
 	}
 	
 }
+

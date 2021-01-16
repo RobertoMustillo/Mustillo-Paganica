@@ -9,8 +9,10 @@ import it.mustillopaganica.weather.model.DataStats;
 import it.mustillopaganica.weather.model.Stats;
 
 /**
- * Questa classe è l'interfaccia di MeteoServiceImpl e contiene i metodi richiamati dal controller
+ * Questa è l'interfaccia di MeteoServiceImpl e contiene i metodi richiamati dal controller
  * @author aldop
+ * @author rbtms
+ * 
  *
  */
 public interface MeteoService {

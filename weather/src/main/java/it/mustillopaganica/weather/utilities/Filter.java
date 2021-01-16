@@ -18,8 +18,8 @@ public class Filter {
  * @param filter filtro di ricerca ricevuto nelle API
  * @param citta  nome della città
  * @param units  sistema di misura
- * @param from
- * @param to
+ * @param from	 data da cui iniziare il filtro
+ * @param to	 data da cui terminare il filtro
  */
 	public Filter(String citta, String units, String from, String to) {
 	super();

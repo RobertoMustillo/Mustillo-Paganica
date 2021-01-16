@@ -103,6 +103,15 @@ public class Statistiche {
 	        }
 	}
 
+	public boolean cittaPresente( String c) {
+		boolean trovato = false ;
+		Archivio.popola();
+		
+		for ( String a : (Archivio.citta) )
+		if (a.equals(c)) trovato = true ;
+		return trovato ;
+		}
+	
 	/*
 	 * @param x è una variabile che serve per verificare
 	 * 			se i dati del campioni sono vuoti

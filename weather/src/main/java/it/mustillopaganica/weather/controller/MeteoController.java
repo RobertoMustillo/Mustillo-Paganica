@@ -76,31 +76,30 @@ public class MeteoController {
 		@RequestMapping(value = "/stats", method = RequestMethod.POST)
 		public Stats STATS(@RequestBody Stats body) throws MeteoException {
 
-			Integer id = 0;
-			
 			switch (body.getCitta()) {
 			case "Termoli":
-				id = 0;
+				body.setId(0);
 				break;
 			case "Ancona":
-				id = 1;
+				body.setId(1);
 				break;
 			case "Milano":
-				id = 2;
+				body.setId(2);
 				break;
 			case "Bergamo":
-				id = 3;
+				body.setId(3);
 				break;
 			case "Napoli":
-				id = 4;
+				body.setId(4);
 				break;
 			case "Benevento":
-				id = 5;
+				body.setId(5);
 				break;
 			case "Torino":
-				id = 6;
+				body.setId(6);
 				break;		
 			}
+		
 
 			return meteoService.getStats(body);
 		}
