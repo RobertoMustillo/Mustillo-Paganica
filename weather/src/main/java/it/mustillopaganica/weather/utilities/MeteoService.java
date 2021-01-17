@@ -6,6 +6,7 @@ import java.util.Vector;
 import it.mustillopaganica.weather.exceptions.MeteoException;
 import it.mustillopaganica.weather.model.Data;
 import it.mustillopaganica.weather.model.DataStats;
+import it.mustillopaganica.weather.model.Previsione;
 import it.mustillopaganica.weather.model.Stats;
 
 /**
@@ -21,6 +22,7 @@ public interface MeteoService {
 	public abstract void getStatsCitta(String citta);
 	public abstract void getFilter(Filter filter) throws MeteoException;
 	public abstract Stats getStats(Stats body) throws MeteoException;
+	public abstract Previsione statsPrevisione(Previsione previsione ) throws MeteoException;
 	public abstract Collection<Vector<Data>> getData();
 	public abstract Collection<Vector<DataStats>> getDataStats();
 }

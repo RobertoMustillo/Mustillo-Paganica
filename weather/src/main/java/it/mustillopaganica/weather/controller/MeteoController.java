@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.mustillopaganica.weather.exceptions.MeteoException;
 import it.mustillopaganica.weather.model.Data;
+import it.mustillopaganica.weather.model.Previsione;
 import it.mustillopaganica.weather.model.Stats;
 import it.mustillopaganica.weather.utilities.MeteoServiceImpl;
 import it.mustillopaganica.weather.utilities.Filter;
@@ -103,4 +104,36 @@ public class MeteoController {
 
 			return meteoService.getStats(body);
 		}
+		
+		//STATS
+		@RequestMapping(value = "/previsioni", method = RequestMethod.POST)
+		public Previsione PREVISIONI(@RequestBody Previsione body) throws MeteoException {
+
+			switch (body.getCitta()) {
+					case "Termoli":
+						body.setId(0);
+						break;
+					case "Ancona":
+						body.setId(1);
+						break;
+					case "Milano":
+						body.setId(2);
+						break;
+					case "Bergamo":
+						body.setId(3);
+						break;
+					case "Napoli":
+						body.setId(4);
+						break;
+					case "Benevento":
+						body.setId(5);
+						break;
+					case "Torino":
+						body.setId(6);
+						break;		
+					}
+				
+
+					return meteoService.statsPrevisione(body);
+				}
 }

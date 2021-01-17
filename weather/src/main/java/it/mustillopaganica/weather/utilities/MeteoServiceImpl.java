@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import it.mustillopaganica.weather.exceptions.MeteoException;
 import it.mustillopaganica.weather.model.Data;
 import it.mustillopaganica.weather.model.DataStats;
+import it.mustillopaganica.weather.model.Previsione;
 import it.mustillopaganica.weather.model.Stats;
 import it.mustillopaganica.weather.service.MeteoParser;
 import it.mustillopaganica.weather.service.ParserStats;
@@ -26,7 +27,9 @@ public class MeteoServiceImpl implements MeteoService{
 	private Map<String, Vector<Data>> meteoRepo = new HashMap<>();
 	private Map<String, Vector<DataStats>> statsRepo = new HashMap<>();
 
-	public MeteoServiceImpl() {}
+	public MeteoServiceImpl() {
+		
+	}
 	
 	@Override
 	public void createMeteo(Data meteo) {
@@ -104,6 +107,32 @@ public class MeteoServiceImpl implements MeteoService{
 			
 					
 			
+		}
+		
+		@Override
+		public Previsione statsPrevisione(Previsione previsione ) throws MeteoException {
+			meteoRepo.clear();
+			Statistiche statistiche = new Statistiche();
+			statistiche.setId(previsione.getId());
+			statistiche.getSTATS();
+			previsione.setEps(statistiche.correnti());
+			
+			
+
+			if(!(statistiche.cittaPresente(previsione.getCitta()))) {
+				throw new MeteoException("Puoi scegliere una tra queste città:"
+						+ "\nTermoli"
+						+ "\nAncona"
+						+ "\nMilano"
+						+ "\nBergamo"
+						+ "\nNapoli"
+						+ "\nBenevento"
+						+ "\nTorino");
+			}
+			else {
+				previsione.setMessage("Ecco di quanto le previsioni sono state errate (°C)");
+				return previsione;
+			}
 		}
 	//metodo usato dal controller per passare al GET la citta per le stats!
 		@Override

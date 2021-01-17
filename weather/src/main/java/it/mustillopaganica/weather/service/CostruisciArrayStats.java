@@ -15,7 +15,7 @@ public class CostruisciArrayStats {
 		private Vector<DataStats> list = new Vector<DataStats>();
 		
 		/**
-		 * Metodo statico che popola il vettore 
+		 * Metodo che popola il vettore 
 		 * @param citta
 		 * @param epoch
 		 * @param descrizione

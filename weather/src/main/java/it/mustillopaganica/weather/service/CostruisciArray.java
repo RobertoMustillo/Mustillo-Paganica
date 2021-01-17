@@ -14,7 +14,7 @@ public class CostruisciArray {
 	private Vector<Data> list = new Vector<Data>();
 	
 	/**
-	 * Metodo statico che popola il vettore 
+	 * Metodo che popola il vettore 
 	 * @param Citta      nome della Citta
 	 * @param units      sistema di misura
 	 * @param epoch      Data

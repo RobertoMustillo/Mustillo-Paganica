@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Vector;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -20,7 +19,7 @@ import it.mustillopaganica.weather.exceptions.MeteoException;
  */
 public class Statistiche {
 
-	private double Temperatura, TemperaturaPercepita;
+	private double Temperatura, Temperatura2,TemperaturaPercepita;
 	
 	private double TempMax=0.0;
 
@@ -39,12 +38,14 @@ public class Statistiche {
 	private double varianza2;
 
 	private double contatore=1;
+	
+	private String epoch;
 
 	private double accumulatore;
 	
 	private double accumulatore2;
 	/*
-	 *@param Citta indica il giorno da scegliere per le stats:
+	 *@param Id indica il giorno da scegliere per le stats:
 	 *{ Termoli = 0
 	 *	Ancona = 1
 	 *	Milano = 2
@@ -54,9 +55,15 @@ public class Statistiche {
 	 *	Torino = 6 } 
 	 */
 	private Integer id=1;
-
-	private Vector<Double> datiTemp = new Vector<Double>();
 	
+	private Double eps;
+
+	protected Vector<Double> datiTemp = new Vector<Double>();
+	
+	protected Vector<Double> datiEps = new Vector<Double>();
+
+	protected Vector<String> epoche = new Vector<String>();
+
 	private Vector<Double> datiTempPerc = new Vector<Double>();
 
 	/**
@@ -72,13 +79,13 @@ public class Statistiche {
 	        try (Reader reader = new FileReader("JSONConfig.txt")) {
 	        	
 	        	JSONArray jArray = (JSONArray) parser.parse(reader);
-//	        	for(int i=0; i<jArray.size(); i++) {
 	        	
 	        	JSONArray jArray2 = (JSONArray) jArray.get(id);
 	        	for(Object o : jArray2) {
 	        		JSONObject obj = (JSONObject)o;
 	        		this.Temperatura = Double.parseDouble(obj.get("Temperatura").toString());
 	        		this.TemperaturaPercepita = Double.parseDouble(obj.get("TemperaturaPercepita").toString());
+	        		this.epoch = (String) obj.get("epoch");
 
 	        		//effettuo delle statistiche
 	        		accumulatore  += Temperatura;
@@ -86,6 +93,7 @@ public class Statistiche {
 	        		
 	        		datiTemp.add(Temperatura);
 	        		datiTempPerc.add(TemperaturaPercepita);
+	        		epoche.add(epoch);
 	        		
 	        		if(this.Temperatura>TempMax) TempMax = Temperatura;
 	        		if(this.Temperatura<TempMin) TempMin = Temperatura;
@@ -95,7 +103,6 @@ public class Statistiche {
 	        	
 	        		
 	        	}
-//	        }
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        } catch (ParseException e) {
@@ -103,12 +110,64 @@ public class Statistiche {
 	        }
 	}
 
+	public Vector<Double> correnti() {
+		JSONParser parser = new JSONParser();
+
+        try (Reader reader = new FileReader("correnti.txt")) {
+        	
+        	JSONArray jArray = (JSONArray) parser.parse(reader);
+        	
+        	JSONArray jArray2 = (JSONArray) jArray.get(id);
+        	for(Object o : jArray2) {
+        		JSONObject obj = (JSONObject)o;
+        		String epochCorrente = (String) obj.get("epoch");
+        		
+        		for(String epoch2 : epoche) {
+            		
+            		if(epoch2.equals(epochCorrente)) {
+        			
+            			this.Temperatura2 = Double.parseDouble(obj.get("Temperatura").toString());
+  //      		this.epoch = (String) obj.get("epoch");
+        		//effettuo delle statistiche
+            			JSONParser parser2 = new JSONParser();
+
+            	         Reader reader2 = new FileReader("JSONConfig.txt");
+            	        	
+            	        	JSONArray jArray3 = (JSONArray) parser2.parse(reader2);
+            	        	
+            	        	JSONArray jArray4 = (JSONArray) jArray3.get(id);
+            	        	for(Object ob : jArray4) {
+            	        		JSONObject obj2 = (JSONObject)ob;
+            	        		String epochForecast = (String) obj2.get("epoch");
+            	        		
+            	            		
+            	            		if(epoch2.equals(epochForecast)) {
+            	        			
+            	            			this.Temperatura = Double.parseDouble(obj.get("Temperatura").toString());
+            	        		//effettuo delle statistiche
+            	            			eps = this.Temperatura - this.Temperatura2;
+            	            			datiEps.add(eps);
+            	        		}
+            	        		
+            	        	}
+            
+        		}
+        		}
+        	}
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+		return datiEps;
+	}
+
 	public boolean cittaPresente( String c) {
 		boolean trovato = false ;
 		Archivio.popola();
 		
 		for ( String a : (Archivio.citta) )
-		if (a.equals(c)) trovato = true ;
+			if (a.equals(c)) trovato = true ;
 		return trovato ;
 		}
 	
@@ -116,7 +175,7 @@ public class Statistiche {
 	 * @param x è una variabile che serve per verificare
 	 * 			se i dati del campioni sono vuoti
 	 * 
-	 * @return se il campione è vuoto oppure no
+	 * @return false se il campione è vuoto
 	 */
 	public boolean trovato(Double x) {
 		boolean trovato = false;
@@ -311,5 +370,13 @@ public class Statistiche {
      */
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getEpoch() {
+		return epoch;
+	}
+
+	public void setEpoch(String epoch) {
+		this.epoch = epoch;
 	}
 }
