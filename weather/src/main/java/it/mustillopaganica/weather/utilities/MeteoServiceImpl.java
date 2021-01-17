@@ -77,9 +77,6 @@ public class MeteoServiceImpl implements MeteoService{
 		public Stats getStats(Stats body) throws MeteoException{
 			meteoRepo.clear();
 			Statistiche statistiche = new Statistiche();
-	//		statistiche.setId(body.getId());
-			
-			
 			statistiche.getSTATS();
 
 			body.setTempMax(statistiche.getTempMax());
@@ -92,21 +89,28 @@ public class MeteoServiceImpl implements MeteoService{
 			body.setVarianzaPercepita(statistiche.getVarianza2());
 			
 			if(!(statistiche.cittaPresente(body.getCitta()))) {
-				throw new MeteoException("Puoi scegliere una tra queste città:"
+			/*	throw new MeteoException("Puoi scegliere una tra queste città:"
 						+ "\nTermoli"
 						+ "\nAncona"
 						+ "\nMilano"
 						+ "\nBergamo"
 						+ "\nNapoli"
 						+ "\nBenevento"
-						+ "\nTorino");
+						+ "\nTorino");*/
+				body.setMessage("ATTENZIONE---Puoi scegliere una tra queste città: "
+						+ "Termoli,Ancona,Milano,Bergamo,Napoli,Benevento,Torino");
+				body.setTempMax(0);
+				body.setTempMin(0);
+				body.setTempPercMax(0);
+				body.setTempPercMin(0);
+				body.setMedia(0);
+				body.setMediaPercepita(0);
+				body.setVarianza(0);
+				body.setVarianzaPercepita(0);
 			}
-			else {
+			else 
+				body.setMessage("Ecco le statistiche delle tue città!");
 				return body;
-			}
-			
-					
-			
 		}
 		
 		@Override
@@ -120,19 +124,25 @@ public class MeteoServiceImpl implements MeteoService{
 			
 
 			if(!(statistiche.cittaPresente(previsione.getCitta()))) {
-				throw new MeteoException("Puoi scegliere una tra queste città:"
+/*				throw new MeteoException("Puoi scegliere una tra queste città:"
 						+ "\nTermoli"
 						+ "\nAncona"
 						+ "\nMilano"
 						+ "\nBergamo"
 						+ "\nNapoli"
 						+ "\nBenevento"
-						+ "\nTorino");
+						+ "\nTorino");*/
+				previsione.setMessage("ATTENZIONE---Puoi scegliere una tra queste città: "
+						+ "Termoli,Ancona,Milano,Bergamo,Napoli,Benevento,Torino");
+				previsione.setEps(null);
+				previsione.setId(null);
+
 			}
 			else {
 				previsione.setMessage("Ecco di quanto le previsioni sono state errate (°C)");
-				return previsione;
 			}
+				return previsione;
+			
 		}
 	//metodo usato dal controller per passare al GET la citta per le stats!
 		@Override

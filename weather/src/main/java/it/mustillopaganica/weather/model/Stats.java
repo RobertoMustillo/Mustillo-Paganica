@@ -27,6 +27,9 @@ public class Stats {
 	private double varianzaPercepita;
 	
 	private String citta;
+	
+	private String message;
+
 	/**
 	 * 
 	 * @return TempMax
@@ -168,6 +171,12 @@ public class Stats {
      */
 	public void setCitta(String citta) {
 		this.citta = citta;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
 }

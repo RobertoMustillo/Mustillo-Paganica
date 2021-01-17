@@ -12,6 +12,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import it.mustillopaganica.weather.exceptions.MeteoException;
+import it.mustillopaganica.weather.model.Previsione;
 
 /**
  * @author rbtms
@@ -100,6 +101,7 @@ public class Statistiche {
 	        		if(this.TemperaturaPercepita>TempPercMax) TempPercMax = TemperaturaPercepita;
 	        		if(this.TemperaturaPercepita<TempPercMin) TempPercMin = TemperaturaPercepita;
 	        		contatore++;
+	        		Previsione.setCampione((int)contatore);
 	        	
 	        		
 	        	}
@@ -112,7 +114,7 @@ public class Statistiche {
 
 	public Vector<Double> correnti() {
 		JSONParser parser = new JSONParser();
-
+		int num=1;
         try (Reader reader = new FileReader("correnti.txt")) {
         	
         	JSONArray jArray = (JSONArray) parser.parse(reader);
@@ -143,10 +145,12 @@ public class Statistiche {
             	            		
             	            		if(epoch2.equals(epochForecast)) {
             	        			
-            	            			this.Temperatura = Double.parseDouble(obj.get("Temperatura").toString());
+            	            			this.Temperatura = Double.parseDouble(obj2.get("Temperatura").toString());
             	        		//effettuo delle statistiche
-            	            			eps = this.Temperatura - this.Temperatura2;
+            	            			eps = this.Temperatura2 - this.Temperatura;
             	            			datiEps.add(eps);
+            	            			
+            	            			Previsione.setStudiate(num++);
             	        		}
             	        		
             	        	}

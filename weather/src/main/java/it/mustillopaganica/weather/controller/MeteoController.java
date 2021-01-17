@@ -51,7 +51,7 @@ public class MeteoController {
 		}
 		
 		//filtro per le statistiche
-		@GetMapping("/previsioni")
+		@GetMapping("/tempo")
 		public ResponseEntity<Object> getCondizioniMeteo(@RequestParam(name = "citta", defaultValue = "") String citta){
 			meteoService.getStatsCitta(citta);
 			return new ResponseEntity<>(meteoService.getDataStats(), HttpStatus.OK);

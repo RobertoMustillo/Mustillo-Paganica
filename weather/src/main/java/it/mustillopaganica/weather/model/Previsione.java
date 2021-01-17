@@ -13,6 +13,10 @@ public class Previsione {
 	
 	private Integer id=0;
 
+	private static Integer studiate=0;
+
+	private static Integer campione=1;
+
 	private Vector<Double> eps;
 
 	private String message;
@@ -51,6 +55,18 @@ public class Previsione {
 	}
 	public void setCitta(String citta) {
 		this.citta = citta;
+	}
+	public Integer getCampione() {
+		return campione;
+	}
+	public static void setCampione(Integer Campione) {
+		campione = Campione;
+	}
+	public Integer getStudiate() {
+		return studiate;
+	}
+	public static void setStudiate(Integer Studiate) {
+		studiate = Studiate;
 	}
 
 }
