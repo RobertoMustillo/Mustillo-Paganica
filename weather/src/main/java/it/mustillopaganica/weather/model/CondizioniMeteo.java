@@ -1,7 +1,7 @@
 package it.mustillopaganica.weather.model;
 
 
-public class DataStats {
+public class CondizioniMeteo {
 	/**
 	 * @author rbtms
 	 * @author aldop
@@ -13,7 +13,7 @@ public class DataStats {
 		private double Vento;
 		private long Visibilita;
 		
-		public DataStats() {
+		public CondizioniMeteo() {
 		}
 		/**
 		 * 
@@ -24,7 +24,7 @@ public class DataStats {
 		 * @param vento
 		 * @param visibilita
 		 */
-		public DataStats(String citta, String epoch, String descrizione, long nuvole, double vento, long visibilita) {
+		public CondizioniMeteo(String citta, String epoch, String descrizione, long nuvole, double vento, long visibilita) {
 			Citta = citta;
 			Epoch=epoch;
 			Descrizione = descrizione;
@@ -34,8 +34,8 @@ public class DataStats {
 		}
 		
 		public boolean equals(Object o) {
-			if (o instanceof DataStats ) {
-				DataStats a = ( DataStats ) o;
+			if (o instanceof CondizioniMeteo ) {
+				CondizioniMeteo a = ( CondizioniMeteo ) o;
 				return (Epoch.equals(a.Epoch) && Citta.equals(a.Citta));
 				}
 				else return false ;			

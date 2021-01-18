@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import it.mustillopaganica.weather.exceptions.MeteoException;
+import it.mustillopaganica.weather.model.CondizioniMeteo;
 import it.mustillopaganica.weather.model.Data;
-import it.mustillopaganica.weather.model.DataStats;
 import it.mustillopaganica.weather.model.Previsione;
 import it.mustillopaganica.weather.model.Stats;
 import it.mustillopaganica.weather.service.MeteoParser;
-import it.mustillopaganica.weather.service.ParserStats;
+import it.mustillopaganica.weather.service.ParserCondizioniMeteo;
 import it.mustillopaganica.weather.service.Period;
 
 /**
@@ -25,7 +25,7 @@ import it.mustillopaganica.weather.service.Period;
 @Service
 public class MeteoServiceImpl implements MeteoService{
 	private Map<String, Vector<Data>> meteoRepo = new HashMap<>();
-	private Map<String, Vector<DataStats>> statsRepo = new HashMap<>();
+	private Map<String, Vector<CondizioniMeteo>> statsRepo = new HashMap<>();
 
 	public MeteoServiceImpl() {
 		
@@ -33,7 +33,7 @@ public class MeteoServiceImpl implements MeteoService{
 	
 	@Override
 	public void createMeteo(Data meteo) {
-		// TODO Auto-generated method stub
+		
 		if(meteoRepo.containsKey(meteo.getCitta()) && meteoRepo.containsKey(meteo.getUnits())) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Citta esistente...");
 		}
@@ -45,6 +45,17 @@ public class MeteoServiceImpl implements MeteoService{
 		
 	}
 	
+	/*
+	 * Riempie la Map con i dati dell'archivio
+	 */
+	public void getArchivio() {
+		meteoRepo.clear();
+		Statistiche statistiche = new Statistiche();
+		statistiche.metadata();
+		meteoRepo.put(statistiche.getEpoch(), statistiche.getArr());
+		
+		
+	}
 	//metodo usato dal controller per passare al GET la citta e l'unità nel path!
 	@Override
 	public void getDataCittaUnits(String citta, String units) {
@@ -140,6 +151,7 @@ public class MeteoServiceImpl implements MeteoService{
 			}
 			else {
 				previsione.setMessage("Ecco di quanto le previsioni sono state errate (°C)");
+				previsione.setCorrette(statistiche.azzeccate(previsione.getSoglia()));
 			}
 				return previsione;
 			
@@ -148,7 +160,7 @@ public class MeteoServiceImpl implements MeteoService{
 		@Override
 		public void getStatsCitta(String citta) {
 			statsRepo.clear();
-			ParserStats p = new ParserStats(citta);
+			ParserCondizioniMeteo p = new ParserCondizioniMeteo(citta);
 			p.parser();
 			statsRepo.put(p.getCitta(), p.getStats());
 		}
@@ -159,7 +171,7 @@ public class MeteoServiceImpl implements MeteoService{
 		}
 		
 		@Override
-		public Collection<Vector<DataStats>> getDataStats(){
+		public Collection<Vector<CondizioniMeteo>> getDataStats(){
 			return statsRepo.values();
 		}
 	

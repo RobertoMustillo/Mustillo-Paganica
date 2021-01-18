@@ -12,7 +12,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import it.mustillopaganica.weather.exceptions.MeteoException;
+import it.mustillopaganica.weather.model.Data;
 import it.mustillopaganica.weather.model.Previsione;
+import it.mustillopaganica.weather.service.CostruisciArray;
 
 /**
  * @author rbtms
@@ -40,6 +42,16 @@ public class Statistiche {
 
 	private double contatore=1;
 	
+	private String Citta;
+
+	private long Umidita;
+	
+	private String units="metric";
+	
+	private double TemperaturaMinima;
+	
+	private double TemperaturaMassima;
+	
 	private String epoch;
 
 	private double accumulatore;
@@ -66,6 +78,11 @@ public class Statistiche {
 	protected Vector<String> epoche = new Vector<String>();
 
 	private Vector<Double> datiTempPerc = new Vector<Double>();
+	
+	private Vector<Data> arr = new Vector<Data>();
+
+	private CostruisciArray costruisciArray = new CostruisciArray();
+
 
 	/**
 	 * Costruttore di default
@@ -87,7 +104,7 @@ public class Statistiche {
 	        		this.Temperatura = Double.parseDouble(obj.get("Temperatura").toString());
 	        		this.TemperaturaPercepita = Double.parseDouble(obj.get("TemperaturaPercepita").toString());
 	        		this.epoch = (String) obj.get("epoch");
-
+	        	
 	        		//effettuo delle statistiche
 	        		accumulatore  += Temperatura;
 	        		accumulatore2 += TemperaturaPercepita;
@@ -102,7 +119,7 @@ public class Statistiche {
 	        		if(this.TemperaturaPercepita<TempPercMin) TempPercMin = TemperaturaPercepita;
 	        		contatore++;
 	        		Previsione.setCampione((int)contatore);
-	        	
+	        		
 	        		
 	        	}
 	        } catch (IOException e) {
@@ -129,7 +146,6 @@ public class Statistiche {
             		if(epoch2.equals(epochCorrente)) {
         			
             			this.Temperatura2 = Double.parseDouble(obj.get("Temperatura").toString());
-  //      		this.epoch = (String) obj.get("epoch");
         		//effettuo delle statistiche
             			JSONParser parser2 = new JSONParser();
 
@@ -148,6 +164,8 @@ public class Statistiche {
             	            			this.Temperatura = Double.parseDouble(obj2.get("Temperatura").toString());
             	        		//effettuo delle statistiche
             	            			eps = this.Temperatura2 - this.Temperatura;
+            	            			eps=round(eps);
+            	            			if(eps<0) eps *= (-1);
             	            			datiEps.add(eps);
             	            			
             	            			Previsione.setStudiate(num++);
@@ -166,6 +184,44 @@ public class Statistiche {
 		return datiEps;
 	}
 
+	public void metadata() {
+		 JSONParser parser = new JSONParser();
+
+	        try (Reader reader = new FileReader("JSONConfig.txt")) {
+	        	
+	        	JSONArray jArray = (JSONArray) parser.parse(reader);
+	        	for(int i=0; i<jArray.size(); i++) {
+	        	JSONArray jArray2 = (JSONArray) jArray.get(i);
+	        	for(Object o : jArray2) {
+	        		JSONObject obj = (JSONObject)o;
+	        		this.Temperatura = Double.parseDouble(obj.get("Temperatura").toString());
+	        		this.TemperaturaPercepita = Double.parseDouble(obj.get("TemperaturaPercepita").toString());
+	        		this.epoch = (String) obj.get("epoch");
+	        		this.Citta = (String)obj.get("Citta");
+	        		this.Umidita = Long.parseLong(obj.get("Umidita").toString());
+	        		this.TemperaturaMinima = Double.parseDouble(obj.get("TemperaturaMinima").toString());
+                 	this.TemperaturaMassima = Double.parseDouble(obj.get("TemperaturaMassima").toString());
+                 
+                 	arr = (costruisciArray.Costruisci(Citta, units, epoch, Temperatura,
+	        				TemperaturaPercepita, TemperaturaMinima, TemperaturaMassima, Umidita));
+	        	
+	        	}	
+	        	}
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } catch (ParseException e) {
+	            e.printStackTrace();
+	        }
+
+	}
+	public Integer azzeccate(Double soglia) {
+		Integer azzeccate = 0;
+		for(Double x : datiEps) {
+			if(x - soglia <= 0) ++azzeccate;
+		}
+		return azzeccate;
+		
+	}
 	public boolean cittaPresente( String c) {
 		boolean trovato = false ;
 		Archivio.popola();
@@ -382,5 +438,13 @@ public class Statistiche {
 
 	public void setEpoch(String epoch) {
 		this.epoch = epoch;
+	}
+
+	public Vector<Data> getArr() {
+		return arr;
+	}
+
+	public void setArr(Vector<Data> arr) {
+		this.arr = arr;
 	}
 }

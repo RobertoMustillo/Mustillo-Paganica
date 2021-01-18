@@ -1,18 +1,18 @@
 package it.mustillopaganica.weather.service;
 
-import it.mustillopaganica.weather.model.DataStats;
+import it.mustillopaganica.weather.model.CondizioniMeteo;
 import java.util.Vector;
 
 /**
  * @author rbtms
  * @author aldop
  */
-public class CostruisciArrayStats {
+public class CostruisciCondizioniMeteo {
 
 		/**
 		 * contiene tutti i dati per le statistiche del meteo
 		 */
-		private Vector<DataStats> list = new Vector<DataStats>();
+		private Vector<CondizioniMeteo> list = new Vector<CondizioniMeteo>();
 		
 		/**
 		 * Metodo che popola il vettore 
@@ -24,10 +24,10 @@ public class CostruisciArrayStats {
 		 * @param visibilita
 		 * @return list
 		 */
-		public Vector<DataStats> CostruisciStats(String citta,String epoch, String descrizione,long nuvole, 
+		public Vector<CondizioniMeteo> CostruisciStats(String citta,String epoch, String descrizione,long nuvole, 
 				double vento, long visibilita)
 		{
-			DataStats infoMeteo = new  DataStats(citta, epoch,descrizione, nuvole, vento, visibilita);
+			CondizioniMeteo infoMeteo = new  CondizioniMeteo(citta, epoch,descrizione, nuvole, vento, visibilita);
 			list.add(infoMeteo);
 			return list;
 		}

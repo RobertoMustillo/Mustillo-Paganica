@@ -13,6 +13,10 @@ public class Previsione {
 	
 	private Integer id=0;
 
+	private Integer corrette;
+
+	private Double soglia;
+
 	private static Integer studiate=0;
 
 	private static Integer campione=1;
@@ -32,7 +36,7 @@ public class Previsione {
 	}
 	/**
      * 
-     * @param eps
+     * @param eps (Epsilon) Indica l'errore nel calcolo della temperatura previsionale.
      */
 	public void setEps(Vector<Double> eps) {
 		this.eps = eps;
@@ -67,6 +71,18 @@ public class Previsione {
 	}
 	public static void setStudiate(Integer Studiate) {
 		studiate = Studiate;
+	}
+	public Double getSoglia() {
+		return soglia;
+	}
+	public void setSoglia(Double soglia) {
+		this.soglia = soglia;
+	}
+	public Integer getCorrette() {
+		return corrette;
+	}
+	public void setCorrette(Integer corrette) {
+		this.corrette = corrette;
 	}
 
 }

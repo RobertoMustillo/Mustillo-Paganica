@@ -27,7 +27,6 @@ public class MeteoParser {
 	private String units="metric";
 	private Vector<Data> arr = new Vector<Data>();
 
-//	public JSONArray jsonArray = new JSONArray();
 	private CostruisciArray costruisciArray = new CostruisciArray();
 	
 	public Vector<Data> getArr() {
@@ -150,7 +149,6 @@ public class MeteoParser {
 	                    this.Umidita = Long.parseLong(main.get("humidity").toString());
                  
 	                    arr = costruisciArray.Costruisci(Citta, units,epoch, Temperatura, TemperaturaPercepita, TemperaturaMinima, TemperaturaMassima, Umidita);
-//	                    jsonArray = (JSONArray) JSONValue.parseWithException(ParsingJSON.ParsingToJSON(arr));
 	          	      	
 	                }
 	            }

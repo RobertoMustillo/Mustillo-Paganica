@@ -7,36 +7,34 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Vector;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import it.mustillopaganica.weather.model.DataStats;
+import it.mustillopaganica.weather.model.CondizioniMeteo;
 
 
 /**
  * @author rbtms
  * @author aldop
  */
-public class ParserStats {
-	private Vector<DataStats> stats = new Vector<DataStats>();
+public class ParserCondizioniMeteo {
+	private Vector<CondizioniMeteo> stats = new Vector<CondizioniMeteo>();
 	private String Citta;
 	private String epoch;
 	private String Descrizione;
 	private long Nuvole;
 	private double Vento;
 	private long Visibilita;
-	private CostruisciArrayStats costruisciArray = new CostruisciArrayStats();
+	private CostruisciCondizioniMeteo costruisciArray = new CostruisciCondizioniMeteo();
 
-	public ParserStats() {
+	public ParserCondizioniMeteo() {
 		
 	}
 	/**
 	 * @param è il nome della città di cui si vuole conoscere le statistiche
 	 */
-	public ParserStats(String citta) {
+	public ParserCondizioniMeteo(String citta) {
 		this.Citta=citta;
 	}
 	/**
@@ -57,14 +55,14 @@ public class ParserStats {
 	 * 
 	 * @return stats
 	 */
-	public Vector<DataStats> getStats() {
+	public Vector<CondizioniMeteo> getStats() {
 		return stats;
 	}
     /**
      * 
      * @param stats
      */
-	public void setStats(Vector<DataStats> stats) {
+	public void setStats(Vector<CondizioniMeteo> stats) {
 		this.stats = stats;
 	}
 	/*

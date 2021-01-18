@@ -30,7 +30,8 @@ public class MeteoController {
 	 * Ritorna il meteo di tutte le citta presenti nell'archivio
 	 */
 	@RequestMapping(value = "/metadata", method = RequestMethod.GET)
-	   public ResponseEntity<Object> getData() {
+	   public ResponseEntity<Object> getMetadata() {
+		meteoService.getArchivio();
 	      return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 	  }
 
@@ -73,7 +74,10 @@ public class MeteoController {
 
 		}
 		
-		//STATS
+		/*
+		 * STATS max, min, media e varianza
+		 * di temperature reali e percepite 
+		 */
 		@RequestMapping(value = "/stats", method = RequestMethod.POST)
 		public Stats STATS(@RequestBody Stats body) throws MeteoException {
 
@@ -101,11 +105,12 @@ public class MeteoController {
 				break;		
 			}
 		
+			
 
 			return meteoService.getStats(body);
 		}
 		
-		//STATS
+		//STATS azzeccate
 		@RequestMapping(value = "/previsioni", method = RequestMethod.POST)
 		public Previsione PREVISIONI(@RequestBody Previsione body) throws MeteoException {
 
