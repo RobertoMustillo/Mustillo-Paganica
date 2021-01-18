@@ -9,9 +9,7 @@ package it.mustillopaganica.weather.exceptions;
  */
 public class MeteoException extends Exception{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	public MeteoException() {
@@ -24,4 +22,10 @@ public class MeteoException extends Exception{
 	public MeteoException(String message) {
 		super(message);
 	}
+	
+	public void validateParameters(Integer param ) {
+		if (param == null) {
+		throw new NullPointerException("Null parameters are not allowed");
+		}
+		}
 }

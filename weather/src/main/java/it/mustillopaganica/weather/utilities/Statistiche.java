@@ -21,16 +21,20 @@ import it.mustillopaganica.weather.service.CostruisciArray;
  *
  */
 public class Statistiche {
+	
+	private String path = "JSONConfig.txt";
+
+	private String path2 = "correnti.txt";
 
 	private double Temperatura, Temperatura2,TemperaturaPercepita;
 	
-	private double TempMax=0.0;
+	private double TempMax;
 
-	private double TempMin=0.0;
+	private double TempMin;
 
-	private double TempPercMax=0.0;
+	private double TempPercMax;
 
-	private double TempPercMin=0.0;
+	private double TempPercMin;
 	
 	private double media;
 	
@@ -90,11 +94,17 @@ public class Statistiche {
 	public Statistiche() {
 		
 	}
-	
+	/*
+	 * Necessaria nei TEST
+	 */
+	public void validate (String x) {	
+		if (x != path) throw new NullPointerException ("path non presente");
+	}
+
 	public void getSTATS() {
 		 JSONParser parser = new JSONParser();
 
-	        try (Reader reader = new FileReader("JSONConfig.txt")) {
+	        try (Reader reader = new FileReader(this.path)) {
 	        	
 	        	JSONArray jArray = (JSONArray) parser.parse(reader);
 	        	
@@ -132,7 +142,7 @@ public class Statistiche {
 	public Vector<Double> correnti() {
 		JSONParser parser = new JSONParser();
 		int num=1;
-        try (Reader reader = new FileReader("correnti.txt")) {
+        try (Reader reader = new FileReader(this.path2)) {
         	
         	JSONArray jArray = (JSONArray) parser.parse(reader);
         	
@@ -149,7 +159,7 @@ public class Statistiche {
         		//effettuo delle statistiche
             			JSONParser parser2 = new JSONParser();
 
-            	         Reader reader2 = new FileReader("JSONConfig.txt");
+            	         Reader reader2 = new FileReader(this.path);
             	        	
             	        	JSONArray jArray3 = (JSONArray) parser2.parse(reader2);
             	        	
@@ -187,7 +197,7 @@ public class Statistiche {
 	public void metadata() {
 		 JSONParser parser = new JSONParser();
 
-	        try (Reader reader = new FileReader("JSONConfig.txt")) {
+	        try (Reader reader = new FileReader(this.path)) {
 	        	
 	        	JSONArray jArray = (JSONArray) parser.parse(reader);
 	        	for(int i=0; i<jArray.size(); i++) {
@@ -447,4 +457,21 @@ public class Statistiche {
 	public void setArr(Vector<Data> arr) {
 		this.arr = arr;
 	}
+	
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getPath2() {
+		return path2;
+	}
+
+	public void setPath2(String path2) {
+		this.path2 = path2;
+	}
+
 }

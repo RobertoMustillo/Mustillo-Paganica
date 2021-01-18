@@ -25,7 +25,10 @@ import it.mustillopaganica.weather.service.MeteoParser;
 public class Archivio {
 	
 public static Vector<String> citta = new Vector<String>();
-	
+
+private static String path = "citta.txt";
+
+
 /*
  * Vettore che raccoglie i dati delle citta dell'archivio
  * sotto forma di JSONArray
@@ -37,7 +40,7 @@ public static Vector<JSONArray> meteoRepo = new Vector<JSONArray>();
 		
 		try {
 			
-			BufferedReader read = new BufferedReader(new FileReader("citta.txt"));
+			BufferedReader read = new BufferedReader(new FileReader(path));
 			
 			String city = read.readLine();
 			while(city != null) {
@@ -75,5 +78,13 @@ public static Vector<JSONArray> meteoRepo = new Vector<JSONArray>();
 
 	}
 	
+	
+	public static String getPath() {
+		return path;
+	}
+
+	public static void setPath(String path) {
+		Archivio.path = path;
+	}
 	
 }
