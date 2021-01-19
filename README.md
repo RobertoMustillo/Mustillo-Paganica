@@ -59,6 +59,7 @@ N° | Tipo | Rotta | Descrizione
 [6](#6) | ` POST ` | `/filter` | *consente di effettuare un filtro del periodo in modo da restituire un JSONArray contenente le informazioni della città con l'unità di misura richiesta nel body relative alla temperatura e alle condizioni meteo per il solo periodo voluto.*
 [7](#7) | ` POST ` | `/stats` | *consente di effettuare statistiche riguardanti valori minimi, massimi, media e varianza di temperature reali e percepite della città chiesta nel body.*
 [8](#8) | ` POST ` | `/previsioni` | *consente di effettuare statistiche sulla quantità di previsioni azzeccate, in base ad una soglia di errore. Filtraggio modificando la soglia di errore.*
+
 <a name="uso"></a>
 # Come si usa
 Per avere una corretta risposta bisogna effettuare le richieste in questo modo:
@@ -79,99 +80,6 @@ La richiesta va inserita come parametro.
 Questa rotta permette di ottenere la temperatura e le condizioni meteo di una qualsiasi città con la misurazione voluta (kelvin, metric, imperial).
 La richiesta va inserita nel body in questo modo
 ![alt_text](https://raw.githubusercontent.com/RobertoMustillo/Mustillo-Paganica/master/Data.png)
-<img src = "https://raw.githubusercontent.com/RobertoMustillo/Mustillo-Paganica/master/Mustillo-Paganica%20Use%20Case%20Diagram.png"/>
-
-## Class Diagram
-<img src ="https://raw.githubusercontent.com/RobertoMustillo/Mustillo-Paganica/master/Mustillo-Paganica%20Class%20Diagram1.png"/>
-
-<a name="rotte"></a>
-#  Rotte
-Le richieste che l'utente può effettuare vanno eseguite tramite Postman ai seguenti indiritti in ---- localhost:8080 ----
-
-N° | Tipo | Rotta | Descrizione
------ | ------------ | -------------------- | ----------------------
-[1](#1) | ` GET ` | `/data/{Milano}/{kelvin}` | *restituisce un JSONArray contenente le informazioni della città con l'unità di misura richiesta relative alla temperatura e alle condizioni meteo per i successivi giorni.*
-[2](#2) | ` GET ` | `/data?citta=Pescara&units=metric` | *restituisce un JSONArray contenente le informazioni della città con l'unità di misura richiesta relative alla temperatura e alle condizioni meteo per i successivi giorni.*
-[3](#3) | ` GET ` | `/tempo?citta=Ancona` | *restituisce un JSONArray contenente le informazioni della città richiesta relative alle condizioni meteo per i successivi giorni.*
-[4](#4) | ` GET ` | `/metadata` | *restituisce un JSONArray contenente le informazioni delle città presenti nell'archivio nel periodo scaricato.*
-[5](#5) | ` POST ` | `/data` | *restituisce un JSONArray contenente le informazioni della città con l'unità di misura richiesta nel body relative alla temperatura e alle condizioni meteo per i successivi giorni.*
-[6](#6) | ` POST ` | `/filter` | *consente di effettuare un filtro del periodo in modo da restituire un JSONArray contenente le informazioni della città con l'unità di misura richiesta nel body relative alla temperatura e alle condizioni meteo per il solo periodo voluto.*
-[7](#7) | ` POST ` | `/stats` | *consente di effettuare statistiche riguardanti valori minimi, massimi, media e varianza di temperature reali e percepite della città chiesta nel body.*
-[8](#8) | ` POST ` | `/previsioni` | *consente di effettuare statistiche sulla quantità di previsioni azzeccate, in base ad una soglia di errore. Filtraggio modificando la soglia di errore.*
-<a name="uso"></a>
-# Come si usa
-Per avere una corretta risposta bisogna effettuare le richieste in questo modo:
-<a name="1"></a>
-###  1. /data/{città}/{misurazione} 
-Questa rotta permette di ottenere la temperatura e le condizioni meteo di una qualsiasi città con la misurazione voluta (kelvin, metric, imperial).
-Le richieste vanno inserite nel path all'interno delle {-->x<--}.
-<a name="2"></a>
-###  2. /data?citta=Pescara&units=metric
-Questa rotta permette di ottenere la temperatura e le condizioni meteo di una qualsiasi città con la misurazione voluta (kelvin, metric, imperial).
-Le richieste vanno inserite come parametri.
-<a name="3"></a>
-###  3. /tempo?citta=Pescara
-In questa rotta puoi scegliere una qualsiasi città.
-La richiesta va inserita come parametro.
-<a name="5"></a>
-###  5. /data
-Questa rotta permette di ottenere la temperatura e le condizioni meteo di una qualsiasi città con la misurazione voluta (kelvin, metric, imperial).
-La richiesta va inserita nel body in questo modo
-![alt_text](https://raw.githubusercontent.com/RobertoMustillo/Mustillo-Paganica/master/Data.png)
-
-<a name="6"></a>
-###  6. /filter
-Questa rotta permette di filtrare il periodo della richiesta ottendento la temperatura e le condizioni meteo di una qualsiasi città con la misurazione voluta (kelvin, metric, imperial).
-La richiesta va inserita nel body in questo modo
-![alt_text](https://raw.githubusercontent.com/RobertoMustillo/Mustillo-Paganica/master/Filter.jpg)
-<a name="7"></a>
-###  7. /stats
-Questa rotta permette di ottenere le statistiche della citta richiesta nel body in questo modo
-![alt_text](https://raw.githubusercontent.com/RobertoMustillo/Mustillo-Paganica/master/stats.jpg)
-Infatti inserendo una città che non è presente nell'archivio verrà generato un messaggio di **errore**.
-![alt_text](https://raw.githubusercontent.com/RobertoMustillo/Mustillo-Paganica/master/errori.png)
-<a name="8"></a>
-###  8. /previsioni
-Questa rotta permette di ottenere le statistiche sulle previsioni azzeccate di una citta. E' possibile filtrare una soglia di errore in base alla quale il programma verifica la quantità delle temperature azzeccate.
-La richiesta va inserita nel body in questo modo
-![alt_text](https://raw.githubusercontent.com/RobertoMustillo/Mustillo-Paganica/master/previsioni.jpg)
-<a name="formato"></a>
-# Formato dei dati restituiti
-In seguito ad una richiesta al servizio viene restituito come risultato un JSON rappresentante un array di oggetti rappresentanti i dati appartenenti al dataset. 
-
-Il formato dell'oggetto rappresentante **l'archivio**, nello specifico è il seguente:
-```	                          
-[
-	{
-	"epoch":  "2021-01-14 15:00:00",
-	"units":  "metric",
-	"citta":  "Comune di Termoli",
-	"temperatura":  11.62,
-	"umidita":  59,
-	"temperaturaMassima":  11.62,
-	"temperaturaPercepita":  6.28,
-	"temperaturaMinima":  11.57
-	},
-	....
-	{
-	"epoch":  "2021-01-14 18:00:00",
-	"units":  "metric",
-	"citta":  "Comune di Termoli",
-	"temperatura":  10.13,
-	"umidita":  83,
-	"temperaturaMassima":  10.13,
-	"temperaturaPercepita":  2.81,
-	"temperaturaMinima":  9.7
-	}
-]
-```
-Significato dei campi della risposta ottenuta da Weather:
-<ul>
-	<li><code>epoch </code> Stringa della data </li>
-	<li><code>units</code> Stringa dell'unità di misura.  (Kelvin, Metric: Celsius, Imperial: Fahrenheit).</li>
-	<li><code>temperatura</code> Temperatura</li>
-	<li><code>umidita</code> % </li>
-</ul>
 
 <a name="6"></a>
 ###  6. /filter
@@ -245,7 +153,7 @@ Il formato dell'oggetto rappresentante le **previsioni azzeccate**, è il seguen
 			0.89,
 			0.43,
 			0.7,
-			],
+		],
 	"message":  "Ecco di quanto le previsioni sono state errate (°C)",
 	"citta":  "Milano",
 	"campione":  41,
