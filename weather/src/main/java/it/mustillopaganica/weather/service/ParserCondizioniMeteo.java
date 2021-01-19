@@ -32,7 +32,7 @@ public class ParserCondizioniMeteo {
 		
 	}
 	/**
-	 * @param è il nome della città di cui si vuole conoscere le statistiche
+	 * @param citta è il nome della città di cui si vuole conoscere le statistiche
 	 */
 	public ParserCondizioniMeteo(String citta) {
 		this.Citta=citta;

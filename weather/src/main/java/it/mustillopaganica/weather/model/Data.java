@@ -48,7 +48,10 @@ public class Data {
 			TemperaturaMassima = tempMax;
 			Umidita = umidita;
 		}
-
+        /**
+         * 
+         * @param Citta
+         */
 		public void getFromMeteoParser(String Citta) {
 			MeteoParser openWeatherParser = new MeteoParser(Citta);
 			openWeatherParser.setUnits(this.units);
@@ -73,7 +76,7 @@ public class Data {
 
 		/**
 		 * Metodo che setta il nome della Città. 
-		 * @param newNomeCitta 
+		 * @param newCitta 
 		 */
 		public void setCitta(String newCitta) {
 			this.Citta = newCitta;
@@ -167,7 +170,7 @@ public class Data {
 		}
 		/**
 	     * Metodo che setta la data. 
-		 * @param newTemperaturaPercepita 
+		 *@param epoch
 	    */
 		public void setEpoch(String epoch) {
 			this.epoch = epoch;

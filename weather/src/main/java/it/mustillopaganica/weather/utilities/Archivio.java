@@ -78,11 +78,17 @@ public static Vector<JSONArray> meteoRepo = new Vector<JSONArray>();
 
 	}
 	
-	
+	/**
+	 * 
+	 * @return path
+	 */
 	public static String getPath() {
 		return path;
 	}
-
+    /**
+     * 
+     * @param path
+     */
 	public static void setPath(String path) {
 		Archivio.path = path;
 	}

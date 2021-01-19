@@ -172,9 +172,17 @@ public class Stats {
 	public void setCitta(String citta) {
 		this.citta = citta;
 	}
+	/**
+	 * 
+	 * @return message
+	 */
 	public String getMessage() {
 		return message;
 	}
+	/**
+	 * 
+	 * @param message
+	 */
 	public void setMessage(String message) {
 		this.message = message;
 	}

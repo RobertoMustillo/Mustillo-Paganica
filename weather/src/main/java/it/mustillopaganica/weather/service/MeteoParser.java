@@ -28,11 +28,14 @@ public class MeteoParser {
 	private Vector<Data> arr = new Vector<Data>();
 
 	private CostruisciArray costruisciArray = new CostruisciArray();
-	
+	/**
+	 * 
+	 * @return arr
+	 */
 	public Vector<Data> getArr() {
 		return arr;
 	}
-
+    
 	public void arrClear() {
 		arr.clear();
 	}
@@ -46,7 +49,10 @@ public class MeteoParser {
 	public MeteoParser() {
 		
 	}
-	
+	/**
+	 * 
+	 * @return Citta
+	 */
 	public String getCitta() {
 		return Citta;
 	}
@@ -167,7 +173,11 @@ public class MeteoParser {
 	      
 	      
 	}
-	
+	/**
+	 * 
+	 * @return jsonArray
+	 * @throws ParseException
+	 */
 	public JSONArray getJsonArray() throws ParseException {
 		JSONArray jsonArray = new JSONArray();
         jsonArray = (JSONArray) JSONValue.parseWithException(ParsingJSON.ParsingToJSON(arr));

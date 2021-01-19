@@ -441,35 +441,59 @@ public class Statistiche {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+    /**
+     * 
+     * @return epoch
+     */
 	public String getEpoch() {
 		return epoch;
 	}
-
+    /**
+     * 
+     * @param epoch
+     */
 	public void setEpoch(String epoch) {
 		this.epoch = epoch;
 	}
-
+    /**
+     * 
+     * @return arr
+     */
 	public Vector<Data> getArr() {
 		return arr;
 	}
-
+    /**
+     * 
+     * @param arr
+     */
 	public void setArr(Vector<Data> arr) {
 		this.arr = arr;
 	}
-	
+	/**
+	 * 
+	 * @return path
+	 */
 	public String getPath() {
 		return path;
 	}
-
+    /**
+     * 
+     * @param path
+     */
 	public void setPath(String path) {
 		this.path = path;
 	}
-
+    /**
+     * 
+     * @return path2
+     */
 	public String getPath2() {
 		return path2;
 	}
-
+    /**
+     * 
+     * @param path2
+     */
 	public void setPath2(String path2) {
 		this.path2 = path2;
 	}
