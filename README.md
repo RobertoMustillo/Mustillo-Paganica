@@ -89,12 +89,12 @@ La richiesta va inserita nel body in questo modo
 ###  7. /stats
 Questa rotta permette di ottenere le statistiche della citta richiesta nel body in questo modo
 ![alt_text](https://raw.githubusercontent.com/RobertoMustillo/Mustillo-Paganica/master/stats.jpg)
+
 Infatti inserendo una città che non è presente nell'archivio verrà generato un messaggio di **errore**.
 ![alt_text](https://raw.githubusercontent.com/RobertoMustillo/Mustillo-Paganica/master/errori.png)
 <a name="8"></a>
 ###  8. /previsioni
-Questa rotta permette di ottenere le statistiche sulle previsioni azzeccate di una citta. E' possibile filtrare una soglia di errore in base alla quale il programma verifica la quantità delle temperature azzeccate.
-La richiesta va inserita nel body in questo modo
+Questa rotta permette di ottenere le statistiche sulle previsioni azzeccate di una citta. E' possibile filtrare una soglia di errore in base alla quale il programma verifica la quantità delle temperature azzeccate. La richiesta va inserita nel body in questo modo
 ![alt_text](https://raw.githubusercontent.com/RobertoMustillo/Mustillo-Paganica/master/previsioni.jpg)
 <a name="formato"></a>
 # Formato dei dati restituiti
