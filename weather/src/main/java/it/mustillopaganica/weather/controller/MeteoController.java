@@ -34,14 +34,22 @@ public class MeteoController {
 		meteoService.getArchivio();
 	      return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 	  }
-
+      /**
+       * 
+       * @param citta
+       * @param units
+       */
 	//ritorna la citta e l'unità di misura indicata nel path "/data/{--x--}/{--y--}"
 		@RequestMapping(value = "/data/{citta}/{units}", method = RequestMethod.GET)
 		   public ResponseEntity<Object> getDataCittaUnits(@PathVariable String citta,@PathVariable String units) {
 			meteoService.getDataCittaUnits(citta,units);
 		      return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 		  }
-
+        /**
+         * 
+         * @param citta
+         * @param units
+         */
 		//filtro della citta e dell'unità di misura indicato nei PARAMETRI della GET
 		@GetMapping("/data")
 		public ResponseEntity<Object> getDataCittaUnits2(@RequestParam(name = "citta", defaultValue = "") String citta,
@@ -50,14 +58,20 @@ public class MeteoController {
 			return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 			
 		}
-		
+		/**
+		 * 
+		 * @param citta
+		 */
 		//filtro per le statistiche
 		@GetMapping("/tempo")
 		public ResponseEntity<Object> getCondizioniMeteo(@RequestParam(name = "citta", defaultValue = "") String citta){
 			meteoService.getStatsCitta(citta);
 			return new ResponseEntity<>(meteoService.getDataStats(), HttpStatus.OK);
 		}
-		
+    /**
+     * 
+     * @param meteo
+     */
 	//ritorna una citta richiesta nel body
 	@RequestMapping(value = "/data", method = RequestMethod.POST)
 	public ResponseEntity<Object> createMeteo(@RequestBody Data meteo) {
@@ -66,6 +80,11 @@ public class MeteoController {
 		return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 
 	}
+	/**
+	 * 
+	 * @param filter
+	 * @throws MeteoException
+	 */
 	//Filtro di una data richiesta dall utente
 		@RequestMapping(value = "/filter", method = RequestMethod.POST)
 		public ResponseEntity<Object> Filter(@RequestBody Filter filter) throws MeteoException {
@@ -77,6 +96,11 @@ public class MeteoController {
 		/*
 		 * STATS max, min, media e varianza
 		 * di temperature reali e percepite 
+		 */
+		/**
+		 * 
+		 * @param body
+		 * @throws MeteoException
 		 */
 		@RequestMapping(value = "/stats", method = RequestMethod.POST)
 		public Stats STATS(@RequestBody Stats body) throws MeteoException {
@@ -111,6 +135,11 @@ public class MeteoController {
 		}
 		
 		//STATS azzeccate
+		/**
+		 * 
+		 * @param body
+		 * @throws MeteoException
+		 */
 		@RequestMapping(value = "/previsioni", method = RequestMethod.POST)
 		public Previsione PREVISIONI(@RequestBody Previsione body) throws MeteoException {
 

@@ -237,11 +237,17 @@ public class Period {
 	public void setArr(Vector<Data> arr) {
 		this.arr = arr;
 	}
-
+    /**
+     * 
+     * @return costruisciArray
+     */
 	public CostruisciArray getCostruisciArray() {
 		return costruisciArray;
 	}
-
+    /**
+     * 
+     * @param costruisciArray
+     */
 	public void setCostruisciArray(CostruisciArray costruisciArray) {
 		this.costruisciArray = costruisciArray;
 	}

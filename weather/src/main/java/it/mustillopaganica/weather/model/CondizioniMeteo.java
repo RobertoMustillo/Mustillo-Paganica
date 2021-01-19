@@ -32,7 +32,6 @@ public class CondizioniMeteo {
 			Vento = vento;
 			Visibilita = visibilita;
 		}
-		
 		public boolean equals(Object o) {
 			if (o instanceof CondizioniMeteo ) {
 				CondizioniMeteo a = ( CondizioniMeteo ) o;
