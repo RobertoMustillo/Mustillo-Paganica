@@ -50,7 +50,7 @@ In seguito ad una richiesta al servizio viene restituito come risultato un JSON 
 
 # UML
 ## Class Diagram
-<img src ="/Mustillo-Paganica Class Diagram.png"/>
+<img src ="/Mustillo-Paganica Class Diagram1.png"/>
 
 # Autori
 
