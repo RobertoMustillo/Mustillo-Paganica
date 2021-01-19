@@ -22,10 +22,4 @@ public class MeteoException extends Exception{
 	public MeteoException(String message) {
 		super(message);
 	}
-	
-	public void validateParameters(Integer param ) {
-		if (param == null) {
-		throw new NullPointerException("Null parameters are not allowed");
-		}
-		}
 }
