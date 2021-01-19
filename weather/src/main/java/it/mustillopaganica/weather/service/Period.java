@@ -83,7 +83,6 @@ public class Period {
 	                    //esegue il parser delle sole date richiste nel filter
 	                    //cioè dalla data from alla data to
 	                    if((epoch.compareTo(filter.getFrom()) >= 0)) {
-	         //           if(dt.containsValue(filter.getFrom())) { //filtra il periodo
 
 	                    JSONObject meteo2 = (JSONObject) o;
 	                    JSONObject main = (JSONObject) meteo2.get("main");

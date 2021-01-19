@@ -78,6 +78,7 @@ public class MeteoServiceImpl implements MeteoService{
 				Period period = new Period(fil.getCitta());
 				period.filter.setFrom(fil.getFrom());
 				period.filter.setTo(fil.getTo());
+				period.setUnits(fil.getUnits());
 				period.parser();
 				meteoRepo.put(period.getCitta(), period.getArr());
 			}
@@ -100,14 +101,7 @@ public class MeteoServiceImpl implements MeteoService{
 			body.setVarianzaPercepita(statistiche.getVarianza2());
 			
 			if(!(statistiche.cittaPresente(body.getCitta()))) {
-			/*	throw new MeteoException("Puoi scegliere una tra queste città:"
-						+ "\nTermoli"
-						+ "\nAncona"
-						+ "\nMilano"
-						+ "\nBergamo"
-						+ "\nNapoli"
-						+ "\nBenevento"
-						+ "\nTorino");*/
+
 				body.setMessage("ATTENZIONE---Puoi scegliere una tra queste città: "
 						+ "Termoli,Ancona,Milano,Bergamo,Napoli,Benevento,Torino");
 				body.setTempMax(0);
@@ -135,14 +129,7 @@ public class MeteoServiceImpl implements MeteoService{
 			
 
 			if(!(statistiche.cittaPresente(previsione.getCitta()))) {
-/*				throw new MeteoException("Puoi scegliere una tra queste città:"
-						+ "\nTermoli"
-						+ "\nAncona"
-						+ "\nMilano"
-						+ "\nBergamo"
-						+ "\nNapoli"
-						+ "\nBenevento"
-						+ "\nTorino");*/
+
 				previsione.setMessage("ATTENZIONE---Puoi scegliere una tra queste città: "
 						+ "Termoli,Ancona,Milano,Bergamo,Napoli,Benevento,Torino");
 				previsione.setEps(null);
