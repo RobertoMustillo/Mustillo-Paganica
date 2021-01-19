@@ -4,7 +4,9 @@ import java.util.Vector;
 
 import it.mustillopaganica.weather.model.Data;;
 
-
+/*
+ * Necessaria per costruire la raccolta dei dati
+ */
 public class CostruisciArray {
 	/**
 	 * contiene tutti i dati del meteo

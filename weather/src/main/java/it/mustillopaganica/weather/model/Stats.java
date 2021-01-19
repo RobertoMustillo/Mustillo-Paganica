@@ -4,6 +4,7 @@
 package it.mustillopaganica.weather.model;
 
 /**
+ * Classe di output
  * @author rbtms
  * @author aldop
  */

@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 //import it.mustillopaganica.weather.utilities.Archivio;
-
+/*
+ * Main
+ */
 @SpringBootApplication
 @EnableScheduling
 public class WeatherApplication {

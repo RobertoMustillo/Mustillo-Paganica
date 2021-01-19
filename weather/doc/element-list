@@ -1,0 +1,6 @@
+it.mustillopaganica.weather
+it.mustillopaganica.weather.controller
+it.mustillopaganica.weather.exceptions
+it.mustillopaganica.weather.model
+it.mustillopaganica.weather.service
+it.mustillopaganica.weather.utilities

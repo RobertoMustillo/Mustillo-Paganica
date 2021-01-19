@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"it.mustillopaganica.weather"},{"l":"it.mustillopaganica.weather.controller"},{"l":"it.mustillopaganica.weather.exceptions"},{"l":"it.mustillopaganica.weather.model"},{"l":"it.mustillopaganica.weather.service"},{"l":"it.mustillopaganica.weather.utilities"}]

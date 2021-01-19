@@ -15,7 +15,9 @@ import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 import it.mustillopaganica.weather.model.Data;
 import it.mustillopaganica.weather.utilities.ParsingJSON;
-
+/*
+ * Parser per il meteo
+ */
 @Service
 public class MeteoParser {
 	private String Citta;

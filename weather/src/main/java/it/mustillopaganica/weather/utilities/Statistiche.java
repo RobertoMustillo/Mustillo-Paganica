@@ -17,8 +17,9 @@ import it.mustillopaganica.weather.model.Previsione;
 import it.mustillopaganica.weather.service.CostruisciArray;
 
 /**
- * @author rbtms
  * Classe che effettua i calcoli per le statistiche
+ * @author rbtms
+ * 
  */
 public class Statistiche {
 	

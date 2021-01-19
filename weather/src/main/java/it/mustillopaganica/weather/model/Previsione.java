@@ -6,6 +6,7 @@ package it.mustillopaganica.weather.model;
 import java.util.Vector;
 
 /**
+ * Classe di output
  * @author rbtms
  * @author aldop
  */

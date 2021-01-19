@@ -10,7 +10,7 @@ import it.mustillopaganica.weather.model.Previsione;
 import it.mustillopaganica.weather.model.Stats;
 
 /**
- * Questa è l'interfaccia di MeteoServiceImpl e contiene i metodi richiamati dal controller
+ * Questa e' l'interfaccia di MeteoServiceImpl e contiene i metodi richiamati dal controller
  * @author aldop
  * @author rbtms
  * 

@@ -15,6 +15,7 @@ import it.mustillopaganica.weather.model.CondizioniMeteo;
 
 
 /**
+ * Parser per le condizioni meteo
  * @author rbtms
  * @author aldop
  */

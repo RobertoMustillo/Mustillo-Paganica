@@ -4,6 +4,7 @@
 package it.mustillopaganica.weather.exceptions;
 
 /**
+ * Classe per le eccezioni
  * @author rbtms
  *
  */

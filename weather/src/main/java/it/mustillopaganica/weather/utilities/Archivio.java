@@ -16,9 +16,9 @@ import org.springframework.stereotype.Service;
 import it.mustillopaganica.weather.service.MeteoParser;
 
 /**
+ * Classe che scarica file per le statistiche
  * @author rbtms
  * @author aldop
- * @Component annotazione che definisce la classe come componente autogestito da Spring
  */
 @Component
 @Service

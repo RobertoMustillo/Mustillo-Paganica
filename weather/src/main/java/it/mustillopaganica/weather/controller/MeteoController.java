@@ -19,6 +19,7 @@ import it.mustillopaganica.weather.utilities.MeteoServiceImpl;
 import it.mustillopaganica.weather.utilities.Filter;
 
 /**
+ * Controller
  * @author rbtms
  */
 @RestController

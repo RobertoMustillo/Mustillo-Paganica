@@ -1,6 +1,8 @@
 package it.mustillopaganica.weather.model;
 
-
+/*
+ * Condizioni del meteo
+ */
 public class CondizioniMeteo {
 	/**
 	 * @author rbtms

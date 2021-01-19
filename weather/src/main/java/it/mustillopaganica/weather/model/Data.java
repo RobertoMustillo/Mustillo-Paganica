@@ -3,6 +3,7 @@ package it.mustillopaganica.weather.model;
 import it.mustillopaganica.weather.service.MeteoParser;
 
 /**
+ * Model
  * @author aldop
  * @author rbtms
  * 
