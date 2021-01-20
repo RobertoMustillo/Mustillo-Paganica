@@ -18,5 +18,5 @@ public class WeatherApplication {
 //		Archivio.popola();
 //	    Archivio.download();
 	}
-
+	
 }
