@@ -178,15 +178,15 @@ I seguenti [test](https://github.com/RobertoMustillo/Mustillo-Paganica/tree/mast
 # Software utilizzati
 Per la realizzazione di questo applicativo sono stati utilizzati i seguenti strumenti:
 
-- Il framework [Spring](https://spring.io), implementando nello specifico i moduli:
+- Il framework [Spring](https://spring.io), implementando:
 	- [Spring Web](https://spring.io/guides/gs/serving-web-content/)
 	- [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools)
-- La libreria [JSON.simple](https://www.tutorialspoint.com/json_simple/json_simple_quick_guide.htm) per la parsificazione, la lettura e la scrittura di oggetti e array in formato JSON
-- [Apache Maven](https://maven.apache.org) per la gestione delle dipendenze sia di Spring che di JSONSimple
+- La libreria [JSON.simple](https://www.tutorialspoint.com/json_simple/json_simple_quick_guide.htm) per lavorare con oggetti e array in formato JSON
+- [Apache Maven](https://maven.apache.org) per la gestione delle dipendenze
 - [Javadoc](https://www.oracle.com/it/technical-resources/articles/java/javadoc-tool.html) per la generazione automatica della documentazione del codice sorgente scritto in linguaggio Java
 - Il framework [JUnit5](https://junit.org/junit5/) per lo unit testing
-- L'applicativo [Postman](https://www.postman.com) per richiamare e testare le API esposte dal nostro servizio
-- I sistemi [Git](https://git-scm.com) e [GitHub](https://github.com) per il versioning del codice
+- L'applicativo [Postman](https://www.postman.com) per richiamare le API ed eseguire delle richieste
+- L'ambiete [GitHub](https://github.com) per il versioning del codice
 - L'IDE [Eclipse](https://www.eclipse.org/downloads/) per lo sviluppo di tutto l'applicativo scritto in java
 
 <a name="autor"></a>
