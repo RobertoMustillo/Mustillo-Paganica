@@ -74,7 +74,7 @@ public static Vector<JSONArray> meteoRepo = new Vector<JSONArray>();
 			meteoRepo.add(m.getJsonArray());
 
 		}
-		ScriviFile(meteoRepo,"file");
+		ScriviFile(meteoRepo,"");
 
 	}
 	

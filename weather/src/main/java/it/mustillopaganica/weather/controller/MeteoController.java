@@ -77,7 +77,6 @@ public class MeteoController {
 	@RequestMapping(value = "/data", method = RequestMethod.POST)
 	public ResponseEntity<Object> createMeteo(@RequestBody Data meteo) {
 		meteoService.createMeteo(meteo);
-//		return new ResponseEntity<>(meteoService.createMeteo(meteo), HttpStatus.OK);
 		return new ResponseEntity<>(meteoService.getData(), HttpStatus.OK);
 
 	}
